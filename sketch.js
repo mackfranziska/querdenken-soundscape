@@ -18,14 +18,14 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(displayWidth, displayHeight);
+    createCanvas(displayWidth, (displayHeight-150));
     sounds = [wendler, xavier, aktivist, attila, eva, heiko, miriam, ballweg, nana];
     names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Hermann', 'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena'];
     position = [];
 
     // create array of random positional values
     for (i = 0; i < sounds.length; i ++) {
-        append(position, [random(100, (displayWidth-100)), random(100, (displayHeight-100))]);
+        append(position, [random(100, (displayWidth-100)), random(100, (displayHeight-250))]);
     }
     
     // create button to stop sound
