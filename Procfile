@@ -1,1 +1,1 @@
-web: node /public/sketch.js
+web: node public/server.js
