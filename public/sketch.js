@@ -1,5 +1,5 @@
 var button;
-var start;
+// var start;
 var sounds;
 var names;
 var position;
@@ -39,17 +39,18 @@ function setup() {
     }
 
     // create start button to enable sound to play
-    start = createButton('start');
-    // button.mousePressed(startExperience);
+    //start = createButton('start');
+    //start.mousePressed(startExperience);
     
     // create button to stop sound
-    button = createButton('silence');
+    button = createButton('play');
     button.mousePressed(togglePlaying);
-  
-    // loop audio files
+
+    // loop sounds
     for (i = 0; i < sounds.length; i ++) {
         sounds[i].loop();
     }
+
 }
 
 function togglePlaying() {
@@ -63,6 +64,7 @@ function togglePlaying() {
         }
     }
 }
+
 
 function draw() {
     background(0);
