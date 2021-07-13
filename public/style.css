@@ -6,3 +6,33 @@ html, body {
 canvas {
   display: block;
 }
+
+button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  height: 30px;
+  width: 60px;
+  display: inline-block;
+  padding: 0.35em, 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  text-decoration: none;
+  font-family:'Roboto',sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color:#4412ce;
+  text-align: center;
+}
+
+button:hover{
+  color: #4412ce;;
+  background-color: white;
+
+}
+
+@media all and (max-width:30em){
+  button {
+    display: block;
+    margin:0.4em auto;
+    }
+}

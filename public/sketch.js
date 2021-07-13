@@ -1,5 +1,4 @@
 var button;
-// var start;
 var sounds;
 var names;
 var position;
@@ -37,13 +36,9 @@ function setup() {
     for (i = 0; i < sounds.length; i ++) {
         append(position, [random(100, (displayWidth-100)), random(100, (displayHeight-100))]);
     }
-
-    // create start button to enable sound to play
-    //start = createButton('start');
-    //start.mousePressed(startExperience);
     
     // create button to stop sound
-    button = createButton('play');
+    button = createButton('start');
     button.mousePressed(togglePlaying);
 
     // loop sounds
@@ -67,7 +62,7 @@ function togglePlaying() {
 
 
 function draw() {
-    background(0);
+    background(30);
     
     // for each sound file:
     for (i = 0; i < sounds.length; i ++) {
@@ -79,7 +74,7 @@ function draw() {
 	    ellipse(position[i][0], position[i][1], 5);
 
         //add text label
-        textSize(10);
+        textSize(12);
         textAlign(CENTER)
         text(names[i], position[i][0], position[i][1]+20);
 
