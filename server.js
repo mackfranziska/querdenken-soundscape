@@ -1,19 +1,18 @@
-var express = require('express');
+'use strict';
 
-var app = express();
-var server = app.listen(process.env.PORT || 3000);
+const express = require('express');
+const socketIO = require('socket.io');
 
-app.use(express.static('public'));
+const PORT = process.env.PORT || 3000;
+const INDEX = '/public/index.html';
 
-console.log('my socket server is running');
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-var socket = require('socket.io');
+const io = socketIO(server);
 
-var io = socket(server);
-
-io.sockets.on('connection', newConnection);
-
-function newConnection(socket) {
+io.on('connection', (socket) => {
     console.log('new connection:' + socket.id);
 
     socket.on('mouse', mouseMsg);
@@ -22,5 +21,6 @@ function newConnection(socket) {
         socket.broadcast.emit('mouse', data);
         console.log(data);
     }
-}
+});
 
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);

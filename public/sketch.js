@@ -24,7 +24,8 @@ function setup() {
 
     // Start a socket connection to the server
     // Some day we would run this server somewhere else
-    socket = io.connect('http://localhost:3000');
+    // 'https://querdenken.herokuapp.com' || 
+    socket = io.connect('https://querdenken.herokuapp.com');
     // We make a named event called 'mouse' and write an
     // anonymous callback function
 
