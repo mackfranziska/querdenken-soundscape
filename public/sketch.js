@@ -25,9 +25,8 @@ function setup() {
     // Start a socket connection to the server
     // Some day we would run this server somewhere else
     // 'https://querdenken.herokuapp.com' || 
-    socket = io.connect('https://querdenken.herokuapp.com');
-    // We make a named event called 'mouse' and write an
-    // anonymous callback function
+    socket = io.connect('http://localhost:3000');
+ 
 
     sounds = [wendler, xavier, aktivist, attila, eva, heiko, miriam, ballweg, nana];
     names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Hermann', 'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena'];
