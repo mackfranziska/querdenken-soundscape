@@ -1,4 +1,5 @@
 var button;
+var start;
 var sounds;
 var names;
 var position;
@@ -30,13 +31,16 @@ function setup() {
 
     sounds = [wendler, xavier, aktivist, attila, eva, heiko, miriam, ballweg, nana];
     names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Hermann', 'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena'];
-    // position = [[50, 250], [150, 250], [200, 350], [500, 550], [350, 650], [500, 950], [150, 850], [400, 900], [50, 1050]];
-
+    
     // create array of random positional values
     position = [];
     for (i = 0; i < sounds.length; i ++) {
         append(position, [random(100, (displayWidth-100)), random(100, (displayHeight-100))]);
     }
+
+    // create start button to enable sound to play
+    start = createButton('start');
+    // button.mousePressed(startExperience);
     
     // create button to stop sound
     button = createButton('silence');
