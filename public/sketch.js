@@ -24,7 +24,7 @@ function setup() {
 
     // Start a socket connection to the server
     // Some day we would run this server somewhere else
-    socket = io.connect(process.env.PORT);
+    socket = io.connect('http://localhost:3000');
     // We make a named event called 'mouse' and write an
     // anonymous callback function
 
