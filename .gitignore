@@ -1,4 +1,6 @@
 /node_modules
 .DS_Store
 public/websockets-sample-sketch.js
-
+server-template.js
+public/sketch-echo.js
+public/sketch-sample.js
