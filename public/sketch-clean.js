@@ -38,7 +38,7 @@ function setup() {
     
     // create button to start and stop sound
     button = createButton('start');
-    // button.mousePressed(togglePlaying);
+    button.mousePressed(togglePlaying);
 
     // create sound objects
     for (let i = 0; i < files.length; i ++) {
@@ -65,10 +65,11 @@ function togglePlaying() {
     for (i = 0; i < files.length; i ++) {
         if (files[i].isPlaying()){
             files[i].pause();
-            button.html('play');
+            // button.html('play');
         } else {
             files[i].play();
-            button.html('silence');
+            // button.html('silence');
+            button.hide();
         }
     }
 }
