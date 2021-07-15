@@ -8,12 +8,19 @@ var paths = ['files/wendler-impfung.mp3', 'files/xavier-singt.mp3', 'files/aktiv
             'files/friedemann.mp3', 'files/alexander.mp3', 'files/wodarg.mp3',
             'files/herman.mp3', 'files/oliver.mp3', 'files/thorsten.mp3'];
 
-var names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Rosen', 
-            'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena',
-            'Samuel Eckert', 'Bodo Schiffmann', 'Markus Haintz', 'Ken Jebsen',
-            'Sebastian Verboket', 'Milena Preradovic', ' Wolfgang Greulich',
-            'Rainer Fuellmich', 'Ralf Ludwig', 'Friedemann Däbnitz', 'Alexander Ehrlich',
-            'Wolfgang Wodarg', 'Eva Herman', ' Oliver Janich', 'Thorsten Schulte'];
+var names = ['t.me/WENDLER', 't.me/Xavier_Naidoo', 't.me/aktivistmann', 't.me/ATTILAHILDMAN', 't.me/evarosen', 
+            't.me/Schrang_TV', 't.me/MiriamHope', 't.me/querdenken_711', 't.me/nana_lifestyler',
+            't.me/samueleckert', 't.me/AllesAusserMainstream', 't.me/Haintz', 't.me/KenFM',
+            't.me/CoronaFakten', 't.me/Punkt.Preradovic', 't.me/Wolfmut_Tiefgang',
+            't.me/RAFuellmich', 't.me/RALudwig', 't.me/RA_Däbnitz', 't.me/honkforhope',
+            't.me/wordarg', 't.me/Eva_Herman_OFFICIAL', 't.me/JANICHOFFICIAL', 't.me/Silberjunge'];
+
+// var names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Rosen', 
+//             'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena',
+//             'Samuel Eckert', 'Bodo Schiffmann', 'Markus Haintz', 'Ken Jebsen',
+//             'Sebastian Verboket', 'Milena Preradovic', ' Wolfgang Greulich',
+//             'Rainer Fuellmich', 'Ralf Ludwig', 'Friedemann Däbnitz', 'Alexander Ehrlich',
+//             'Wolfgang Wodarg', 'Eva Herman', ' Oliver Janich', 'Thorsten Schulte'];
 
 var relative_range = [12.588235294117647,
                     12.588235294117647,
@@ -100,8 +107,8 @@ function setup() {
 
     // Start a socket connection to the server
     // Some day we would run this server somewhere else
-    // 'https://querdenken.herokuapp.com' || 
-    socket = io.connect('http://localhost:3000');
+    // 'https://querdenken.herokuapp.com' || http://localhost:3000
+    socket = io.connect('https://querdenken.herokuapp.com');
 
     // fill the position array 
     for (i = 0; i < relative_pos.length; i ++) {
@@ -188,7 +195,7 @@ function createEcho() {
 }
 
 function draw() {
-    background(30);
+    background(15, 22, 32);
     
     // for (i = 0; i < files.length; i ++) {
     //     //things[i].show();
@@ -307,7 +314,7 @@ class Sound {
 
     controlVolume(x, y) {
         let d = dist(this.x, this.y, x, y);
-        let volume = map(d, 0, this.range/1.2, 2, 0);
+        let volume = map(d, 0, this.range/2+10, 2, 0);
 
         // cut off if value is negative
         if (volume > 0) {
