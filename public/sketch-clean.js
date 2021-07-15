@@ -114,7 +114,7 @@ function setup() {
     }
     
     // create button to start and stop sound
-    button = createButton('double-click to start');
+    button = createButton('press to start');
     button.mousePressed(togglePlaying);
 
     // create sound objects
@@ -142,7 +142,7 @@ function togglePlaying() {
     for (i = 0; i < files.length; i ++) {
         if (files[i].isPlaying()){
             files[i].pause();
-            // button.html('play');
+            button.html('one more time!');
         } else {
             files[i].play();
             // button.html('silence');
@@ -204,8 +204,6 @@ function draw() {
     // ellipse(mouseX, mouseY, 10);
 
     if (toggle == true) {
-        img.resize(32,32);
-        image(img, mouseX+16, mouseY+16);
 
         for (i = 0; i < files.length; i ++) {
             //things[i].show();
@@ -214,6 +212,9 @@ function draw() {
             things[i].labelHover(mouseX, mouseY);
             things[i].controlVolume(mouseX, mouseY);
         }
+
+        img.resize(24,24);
+        image(img, mouseX-12, mouseY-12);
     }
 
     // Send the mouse coordinates
@@ -299,7 +300,7 @@ class Sound {
         //add text label
         let d = dist(x, y, this.x, this.y);
 
-        if (d < (this.range/3)) {
+        if (d < (this.range/5)) {
             text(this.name, this.x, this.y+5);
         }
     }

@@ -11,6 +11,8 @@ button {
   position: fixed;
   top: 50%;
   left: 50%;
+  margin-top: -20px;
+  margin-left: -100px;
   height: 40px;
   width: 200px;
   display: inline-block;
