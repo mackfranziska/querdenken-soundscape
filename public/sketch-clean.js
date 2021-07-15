@@ -114,8 +114,7 @@ function setup() {
     }
     
     // create button to start and stop sound
-    button = createButton('start');
-    button.style('font',)
+    button = createButton('double-click to start');
     button.mousePressed(togglePlaying);
 
     // create sound objects
@@ -191,21 +190,30 @@ function createEcho() {
 function draw() {
     background(30);
     
-    for (i = 0; i < files.length; i ++) {
-        //things[i].show();
-        things[i].outline();
-        things[i].outlineArea(mouseX, mouseY);
-        things[i].labelHover(mouseX, mouseY);
-        things[i].controlVolume(mouseX, mouseY);
-    }
+    // for (i = 0; i < files.length; i ++) {
+    //     //things[i].show();
+    //     things[i].outline();
+    //     things[i].outlineArea(mouseX, mouseY);
+    //     things[i].labelHover(mouseX, mouseY);
+    //     things[i].controlVolume(mouseX, mouseY);
+    // }
 
     // stroke(255);
     // noFill();
     // drawingContext.setLineDash([]);
     // ellipse(mouseX, mouseY, 10);
+
     if (toggle == true) {
         img.resize(32,32);
         image(img, mouseX+16, mouseY+16);
+
+        for (i = 0; i < files.length; i ++) {
+            //things[i].show();
+            things[i].outline();
+            things[i].outlineArea(mouseX, mouseY);
+            things[i].labelHover(mouseX, mouseY);
+            things[i].controlVolume(mouseX, mouseY);
+        }
     }
 
     // Send the mouse coordinates
