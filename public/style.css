@@ -9,24 +9,24 @@ canvas {
 
 button {
   position: fixed;
-  top: 30px;
-  left: 30px;
-  height: 30px;
-  width: 60px;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  width: 120px;
   display: inline-block;
-  padding: 0.35em, 1.2em;
-  margin: 0 0.3em 0.3em 0;
+
   text-decoration: none;
+  font-size: 14px;
   font-family:'Roboto',sans-serif;
   font-weight: 500;
-  color: white;
-  background-color:#4412ce;
+  color: black;
+  background-color:white;
   text-align: center;
 }
 
 button:hover{
-  color: #4412ce;;
-  background-color: white;
+  color: white;
+  background-color: rgb(168, 168, 168);
 
 }
 

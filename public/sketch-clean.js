@@ -1,9 +1,71 @@
 var button;
 var paths = ['files/wendler-impfung.mp3', 'files/xavier-singt.mp3', 'files/aktivist-mann.mp3',
             'files/attila-antisemitism.mp3', 'files/eva-appell.mp3', 'files/heiko-impfung.mp3',
-            'files/miriam-merkel.mp3', 'files/ballweg-an-attila.mp3', 'files/nana-kritik.mp3'];
-var names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Hermann', 
-            'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena'];
+            'files/miriam-merkel.mp3', 'files/ballweg-an-attila.mp3', 'files/nana-kritik.mp3',
+            'files/samuel-drosten.mp3', 'files/bodo-weint.mp3', 'files/markus.mp3',
+            'files/ken.mp3', 'files/sebastian.mp3', 'files/milena.mp3',
+            'files/wolfgang.mp3', 'files/fuellmich.mp3', 'files/ludwig.mp3',
+            'files/friedemann.mp3', 'files/alexander.mp3', 'files/wodarg.mp3',
+            'files/herman.mp3', 'files/oliver.mp3', 'files/thorsten.mp3'];
+
+var names = ['Michael Wendler', 'Xavier Naidoo', 'Aktivist Mann', 'Attila Hildmann', 'Eva Rosen', 
+            'Heiko Schrang', 'Miriam Hope', 'Michael Ballweg', 'Nana Domena',
+            'Samuel Eckert', 'Bodo Schiffmann', 'Markus Haintz', 'Ken Jebsen',
+            'Sebastian Verboket', 'Milena Preradovic', ' Wolfgang Greulich',
+            'Rainer Fuellmich', 'Ralf Ludwig', 'Friedemann Däbnitz', 'Alexander Ehrlich',
+            'Wolfgang Wodarg', 'Eva Herman', ' Oliver Janich', 'Thorsten Schulte'];
+
+var relative_range = [12.588235294117647,
+                    12.588235294117647,
+                    6.882352941176471,
+                    13.529411764705882,
+                    4.588235294117647,
+                    9.882352941176471,
+                    8.941176470588236,
+                    9.882352941176471,
+                    5.294117647058823,
+                    11.058823529411764,
+                    9.882352941176471,
+                    9.882352941176471,
+                    9.882352941176471,
+                    9.470588235294118,
+                    5.294117647058823,
+                    6.882352941176471,
+                    8.0,
+                    8.0,
+                    5.9411764705882355,
+                    5.9411764705882355,
+                    6.529411764705882,
+                    15.117647058823529,
+                    15.764705882352942,
+                    8.764705882352942];
+
+var relative_pos = [[30, 33],
+                    [30, 54],
+                    [69, 77],
+                    [41, 45],
+                    [52, 75],
+                    [42, 67],
+                    [46, 81],
+                    [60, 37],
+                    [63, 54],
+                    [77, 56],
+                    [87, 59],
+                    [71, 40],
+                    [56, 58],
+                    [61, 82],
+                    [63, 69],
+                    [82, 69],
+                    [61, 15],
+                    [66, 27],
+                    [70, 17],
+                    [86, 39],
+                    [46, 13],
+                    [17, 45],
+                    [20, 70],
+                    [48, 30]];
+
+var range = [];
 var positions = [];
 var files = [];
 
@@ -13,9 +75,19 @@ let things = [];
 let counter = [];
 let state = [];
 let status;
-let echo_distance = 100;
+
+let proxima_bold;
+let proxima_regular;
+
+let img;
+let toggle = false;
 
 function preload() {
+
+    proxima_bold = loadFont('fonts/Mark Simonson - Proxima Nova Bold.otf');
+    proxima_regular = loadFont('fonts/Mark Simonson - Proxima Nova Regular.otf');
+
+    img = loadImage('assets/hear-no-evil@2x.png');
 
     for (let i = 0; i < paths.length; i ++) {
         let file = loadSound(paths[i]);
@@ -24,25 +96,31 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(displayWidth, displayHeight);
+    createCanvas(windowWidth, windowHeight);
 
     // Start a socket connection to the server
     // Some day we would run this server somewhere else
     // 'https://querdenken.herokuapp.com' || 
     socket = io.connect('http://localhost:3000');
 
-    // fill the position array
-    for (i = 0; i < paths.length; i ++) {
-        append(positions, [random(100, (displayWidth-100)), random(100, (displayHeight-100))]);
+    // fill the position array 
+    for (i = 0; i < relative_pos.length; i ++) {
+        append(positions, [(relative_pos[i][0] * windowWidth)/100, (relative_pos[i][1] * windowHeight)/100]);
+    }
+    
+    // fill the range array
+    for (i = 0; i < relative_range.length; i ++) {
+        append(range, [relative_range[i] * windowWidth/50]);
     }
     
     // create button to start and stop sound
     button = createButton('start');
+    button.style('font',)
     button.mousePressed(togglePlaying);
 
     // create sound objects
     for (let i = 0; i < files.length; i ++) {
-        let thing = new Sound(positions[i][0], positions[i][1], names[i], files[i]);
+        let thing = new Sound(positions[i][0], positions[i][1], names[i], files[i], range[i]);
         things.push(thing);
     }
 
@@ -52,11 +130,11 @@ function setup() {
     }
 
     // check hover status
-    setInterval(checkStatus, 1000);
+    // setInterval(checkStatus, 1000);
     // track time for hover in vicinity of object
-    setInterval(trackTime, 1000);
+    // setInterval(trackTime, 1000);
     // create echo
-    setInterval(createEcho, 1000);
+    // setInterval(createEcho, 1000);
 
 }
 
@@ -70,6 +148,8 @@ function togglePlaying() {
             files[i].play();
             // button.html('silence');
             button.hide();
+            noCursor();
+            toggle = true;
         }
     }
 }
@@ -112,12 +192,21 @@ function draw() {
     background(30);
     
     for (i = 0; i < files.length; i ++) {
-        things[i].show();
-        things[i].label();
+        //things[i].show();
+        things[i].outline();
+        things[i].outlineArea(mouseX, mouseY);
+        things[i].labelHover(mouseX, mouseY);
         things[i].controlVolume(mouseX, mouseY);
     }
 
-    ellipse(mouseX, mouseY, 10);
+    // stroke(255);
+    // noFill();
+    // drawingContext.setLineDash([]);
+    // ellipse(mouseX, mouseY, 10);
+    if (toggle == true) {
+        img.resize(32,32);
+        image(img, mouseX+16, mouseY+16);
+    }
 
     // Send the mouse coordinates
     sendmouse(mouseX,mouseY);
@@ -152,30 +241,64 @@ function mouseMirror(data) {
 }
 
 class Sound {
-    constructor(x, y, name, sound) {
+    constructor(x, y, name, sound, range) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.sound = sound;
+        this.range = range;
     }
 
     show() {
         noStroke();
-        fill(255);
+        fill(100);
+
         // draw a circle centered at each point
         ellipse(this.x, this.y, 5);
     }
 
-    label() {
-        //add text label
-        textSize(12);
+    outlineArea(x, y) {
+
+        noStroke();
+        fill(255, 20);
+
+        let d = dist(x, y, this.x, this.y);
+
+        if (d < this.range/2) {
+            drawingContext.setLineDash([0.5, 3]);
+            // outline area
+            ellipse(this.x, this.y, this.range);
+        }
+    }
+
+    outline() {
+
+        stroke(100);
+        noFill();
+        drawingContext.setLineDash([5, 7]);
+        
+        // outline area
+        ellipse(this.x, this.y, this.range);
+    }
+
+    labelHover(x, y) {
+        noStroke();
+        fill(255);
+        textFont(proxima_regular);
+        textSize(13);
         textAlign(CENTER)
-        text(this.name, this.x, this.y + 20);
+
+        //add text label
+        let d = dist(x, y, this.x, this.y);
+
+        if (d < (this.range/3)) {
+            text(this.name, this.x, this.y+5);
+        }
     }
 
     controlVolume(x, y) {
         let d = dist(this.x, this.y, x, y);
-        let volume = map(d, 0, 300, 2, 0);
+        let volume = map(d, 0, this.range/1.2, 2, 0);
 
         // cut off if value is negative
         if (volume > 0) {
@@ -187,7 +310,8 @@ class Sound {
 
     hovered(x, y) {
         let d = dist(x, y, this.x, this.y);
-        if (d < echo_distance) {
+
+        if (d < this.range) {
             status = true;
         } else {
             status = false;
