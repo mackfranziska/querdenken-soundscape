@@ -119,7 +119,7 @@ function setup() {
     //// Start a socket connection to the server
     //// Some day we would run this server somewhere else
     //// 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('https://querdenken.herokuapp.com');
 
     //// ___________ NODE JS STUFF _____________
 
