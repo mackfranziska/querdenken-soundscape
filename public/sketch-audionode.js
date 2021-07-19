@@ -92,6 +92,9 @@ let toggle = false;
 let echos = [];
 let echo_state = [];
 
+let delay;
+let vector;
+
 function preload() {
 
     proxima_bold = loadFont('fonts/Mark Simonson - Proxima Nova Bold.otf');
@@ -107,28 +110,31 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    vector = createVector(-100, -100);
+    
+    delay = new p5.Delay();
 
     //// ___________ NODE JS STUFF _____________
 
     //// Start a socket connection to the server
     //// Some day we would run this server somewhere else
     //// 'https://querdenken.herokuapp.com' || http://localhost:3000
-    // socket = io.connect('http://localhost:3000');
+    socket = io.connect('http://localhost:3000');
 
     //// ___________ NODE JS STUFF _____________
 
-    // fill the position array 
     for (i = 0; i < relative_pos.length; i ++) {
+        // fill the position array 
         append(positions, [(relative_pos[i][0] * windowWidth)/100, (relative_pos[i][1] * windowHeight)/100]);
-    }
-    
-    // fill the range array 
-    for (i = 0; i < relative_range.length; i ++) {
+        // fill the range array 
         append(range, [relative_range[i] * windowWidth/50]);
+        // fill the echo_state array
+        let echoed = false;
+        echo_state.push(echoed);
     }
 
     // create sound objects
-    for (let i = 0; i < files.length; i ++) {
+    for (let i = 0; i < paths.length; i ++) {
         let thing = new Sound(positions[i][0], positions[i][1], names[i], files[i], range[i]);
         things.push(thing);
     }
@@ -136,17 +142,6 @@ function setup() {
     // create button to start and stop sound
     button = createButton('press to start');
     button.mousePressed(startAudio);
-
-    // ________ REPEATER _________
-    // create echo objects
-    for (let i = 0; i < things.length; i ++) {
-        let echo = new Sound(positions[i][0], positions[i][1], names[i], files[i], range[i]);
-        echos.push(echo);
-        // has echo been played yet? Create array of booleans
-        let echoed = false;
-        echo_state.push(echoed);
-    }
-    // ________ REPEATER _________
 
     // check hover status
     setInterval(checkStatus, 1000);
@@ -159,9 +154,8 @@ function setup() {
 
 function startAudio() {
 
-    for (i = 0; i < things.length; i ++) {
+    for (i = 0; i < paths.length; i ++) {
         things[i].sound.loop();
-        // button.html('silence');
         button.hide();
         noCursor();
         toggle = true;
@@ -170,7 +164,7 @@ function startAudio() {
 
 function checkStatus() {
 
-    for (i = 0; i < files.length; i ++) {
+    for (i = 0; i < paths.length; i ++) {
         things[i].hovered(mouseX, mouseY);
         state[i] = status;
     }
@@ -178,48 +172,40 @@ function checkStatus() {
 
 function trackTime() {
 
-    for (i = 0; i < files.length; i ++) {
+    for (i = 0; i < paths.length; i ++) {
         if (state[i] == true) {
             counter[i] ++;
-            // console.log('counter: ' + counter[i]);
+            console.log('counter: ' + counter[i]);
         } if (state[i] == false) {
             counter[i] = 0;
-            // console.log('counter: ' + counter[i]);
         }
     }
 }
 
 function createEcho() {
 
-    for (i = 0; i < files.length; i ++) {
-        
-        // _____ REPEATER ______
+    for (i = 0; i < paths.length; i ++) {
+
         // if hovered longer than 3 seconds and no echo added yet
         if ((counter[i] == 3) & (echo_state[i] == false)){
-            // play echo
-            echos[i].sound.play();
-            // set counter to 0
-            counter[i] = 0;
-            // log echo state
+            // copy sound
+            let new_echo = things[i].sound;
+            // apply effect and play
+            delay.process(new_echo, 0.12, .5, 1300);
+            new_echo.play();
+            // log that echo has been added
             echo_state[i] = true;
-            // console.log('echoed: ' + echo_state[i]);
+            console.log('echo added: ' + echo_state[i]);
         } 
-        // _____ REPEATER ______
     }
 }
 
 function draw() {
     background(15, 22, 32);
 
-    //// DRAW MOUSE POSITION
-    // stroke(255);
-    // noFill();
-    // drawingContext.setLineDash([]);
-    // ellipse(mouseX, mouseY, 10);
-
     if (toggle == true) {
 
-        for (i = 0; i < files.length; i ++) {
+        for (i = 0; i < paths.length; i ++) {
             //things[i].show();
             things[i].outline();
             things[i].outlineArea(mouseX, mouseY);
@@ -233,11 +219,15 @@ function draw() {
 
     //// ___________ NODE JS STUFF _____________
 
-    //// Send the mouse coordinates
-    //sendmouse(mouseX,mouseY);
+    // Send the mouse coordinates
+    sendmouse(mouseX,mouseY);
 
-    //// draw the other mouse
-    //socket.on('mouse', mouseMirror); 
+    // draw the other mouse
+    socket.on('mouse', mouseMirror); 
+
+    // draw a red circle
+    fill(255, 0, 0);
+    ellipse(vector.x, vector.y, 100);
 
     //// ___________ NODE JS STUFF _____________
 }
@@ -262,9 +252,9 @@ function mouseMirror(data) {
     // we are receiving!
     console.log('data received');
 
-    // draw a red circle
-    fill(255, 0, 0);
-    ellipse(data.x, data.y, 100);
+    vector.x = data.x;
+    vector.y = data.y;
+    
 }
 
 class Sound {
