@@ -70,7 +70,7 @@ function setup() {
 
     // NODE: Start a socket connection to the server
     // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('https://querdenken.herokuapp.com');
 
     socket.on('mouse', 
     // when we receive data
