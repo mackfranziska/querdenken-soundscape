@@ -1,5 +1,5 @@
 {
-    "July": [
+    "March": [
         {
             "channel": "t.me/WENDLER",
             "path": "files/wendler-impfung.mp3",
@@ -217,14 +217,286 @@
             ]
         }
     ],
-    "August": [
+    "April": [
+        {
+            "channel": "t.me/WENDLER",
+            "path": "files/wendler_jul.ogg",
+            "range": 15.588235294117647,
+            "pos": [
+                30,
+                33
+            ]
+        },
+        {
+            "channel": "t.me/Xavier_Naidoo",
+            "path": "files/xavier-singt.mp3",
+            "range": 13.588235294117647,
+            "pos": [
+                30,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/aktivistmann",
+            "path": "files/aktivist_jul.ogg",
+            "range": 5.882352941176471,
+            "pos": [
+                69,
+                77
+            ]
+        },
+        {
+            "channel": "t.me/ATTILAHILDMAN",
+            "path": "files/attila_jul.ogg",
+            "range": 14.529411764705882,
+            "pos": [
+                41,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/evarosen",
+            "path": "files/eva_jul.ogg",
+            "range": 5.588235294117647,
+            "pos": [
+                52,
+                75
+            ]
+        },
+        {
+            "channel": "t.me/Schrang_TV",
+            "path": "files/heiko_jul.ogg",
+            "range": 10.882352941176471,
+            "pos": [
+                42,
+                67
+            ]
+        },
+        {
+            "channel": "t.me/MiriamHope",
+            "path": "files/miriam_jul.ogg",
+            "range": 9.941176470588236,
+            "pos": [
+                46,
+                81
+            ]
+        },
+        {
+            "channel": "t.me/nana_lifestyler",
+            "path": "files/nana_jul.ogg",
+            "range": 7.294117647058823,
+            "pos": [
+                63,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/samueleckert",
+            "path": "files/samuel_jul.mp3",
+            "range": 12.058823529411764,
+            "pos": [
+                77,
+                56
+            ]
+        },
         {
             "channel": "t.me/AllesAusserMainstream",
-            "path": "files/bodo-weint.mp3",
-            "range": 9.882352941176471,
+            "path": "files/bodo_jul.mp3",
+            "range": 10.882352941176471,
             "pos": [
                 87,
                 59
+            ]
+        },
+        {
+            "channel": "t.me/Haintz",
+            "path": "files/haintz_jul.mp3",
+            "range": 10.882352941176471,
+            "pos": [
+                71,
+                40
+            ]
+        },
+        {
+            "channel": "t.me/Punkt.Preradovic",
+            "path": "files/milena.mp3",
+            "range": 4.294117647058823,
+            "pos": [
+                63,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/Wolfmut_Tiefgang",
+            "path": "files/wolfgang_jul.mp3",
+            "range": 7.882352941176471,
+            "pos": [
+                82,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/honkforhope",
+            "path": "files/alexander_jul.ogg",
+            "range": 6.9411764705882355,
+            "pos": [
+                86,
+                39
+            ]
+        },
+        {
+            "channel": "t.me/wordarg",
+            "path": "files/alexander_jul.ogg",
+            "range": 7.529411764705882,
+            "pos": [
+                46,
+                13
+            ]
+        },
+        {
+            "channel": "t.me/Eva_Herman_OFFICIAL",
+            "path": "files/herman_jul.ogg",
+            "range": 17.117647058823529,
+            "pos": [
+                17,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/JANICHOFFICIAL",
+            "path": "files/janich_jul.ogg",
+            "range": 14.764705882352942,
+            "pos": [
+                20,
+                70
+            ]
+        }
+    ],
+    "May": [
+        {
+            "channel": "t.me/WENDLER",
+            "path": "files/wendler_aug.ogg",
+            "range": 16.588235294117647,
+            "pos": [
+                30,
+                33
+            ]
+        },
+        {
+            "channel": "t.me/aktivistmann",
+            "path": "files/aktivist_aug.ogg",
+            "range": 4.882352941176471,
+            "pos": [
+                69,
+                77
+            ]
+        },
+        {
+            "channel": "t.me/ATTILAHILDMAN",
+            "path": "files/attila_aug.ogg",
+            "range": 16.529411764705882,
+            "pos": [
+                41,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/evarosen",
+            "path": "files/eva_aug.ogg",
+            "range": 7.588235294117647,
+            "pos": [
+                52,
+                75
+            ]
+        },
+        {
+            "channel": "t.me/Schrang_TV",
+            "path": "files/heiko_aug.ogg",
+            "range": 11.882352941176471,
+            "pos": [
+                42,
+                67
+            ]
+        },
+        {
+            "channel": "t.me/MiriamHope",
+            "path": "files/miriam_aug.ogg",
+            "range": 8.941176470588236,
+            "pos": [
+                46,
+                81
+            ]
+        },
+        {
+            "channel": "t.me/nana_lifestyler",
+            "path": "files/nana_aug.mp3",
+            "range": 8.294117647058823,
+            "pos": [
+                63,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/samueleckert",
+            "path": "files/samuel_aug.mp3",
+            "range": 13.058823529411764,
+            "pos": [
+                77,
+                56
+            ]
+        },
+        {
+            "channel": "t.me/AllesAusserMainstream",
+            "path": "files/bodo_aug.mp3",
+            "range": 10.882352941176471,
+            "pos": [
+                87,
+                59
+            ]
+        },
+        {
+            "channel": "t.me/Wolfmut_Tiefgang",
+            "path": "files/wolfgang_aug.mp3",
+            "range": 7.882352941176471,
+            "pos": [
+                82,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/honkforhope",
+            "path": "files/alexander_aug.ogg",
+            "range": 9.9411764705882355,
+            "pos": [
+                86,
+                39
+            ]
+        },
+        {
+            "channel": "t.me/Eva_Herman_OFFICIAL",
+            "path": "files/herman_aug.ogg",
+            "range": 15.117647058823529,
+            "pos": [
+                17,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/JANICHOFFICIAL",
+            "path": "files/janich_aug.ogg",
+            "range": 15.764705882352942,
+            "pos": [
+                20,
+                70
+            ]
+        },
+        {
+            "channel": "t.me/querdenken_711",
+            "path": "files/ballweg-an-attila.mp3",
+            "range": 9.882352941176471,
+            "pos": [
+                60,
+                37
             ]
         },
         {
@@ -234,6 +506,107 @@
             "pos": [
                 48,
                 30
+            ]
+        }
+    ],
+    "June": [
+        {
+            "channel": "t.me/WENDLER",
+            "path": "files/wendler-impfung.mp3",
+            "range": 12.588235294117647,
+            "pos": [
+                30,
+                33
+            ]
+        },
+        {
+            "channel": "t.me/Xavier_Naidoo",
+            "path": "files/xavier-singt.mp3",
+            "range": 12.588235294117647,
+            "pos": [
+                30,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/aktivistmann",
+            "path": "files/aktivist-mann.mp3",
+            "range": 6.882352941176471,
+            "pos": [
+                69,
+                77
+            ]
+        },
+        {
+            "channel": "t.me/ATTILAHILDMAN",
+            "path": "files/attila-antisemitism.mp3",
+            "range": 13.529411764705882,
+            "pos": [
+                41,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/evarosen",
+            "path": "files/eva-appell.mp3",
+            "range": 4.588235294117647,
+            "pos": [
+                52,
+                75
+            ]
+        },
+        {
+            "channel": "t.me/Schrang_TV",
+            "path": "files/heiko-impfung.mp3",
+            "range": 9.882352941176471,
+            "pos": [
+                42,
+                67
+            ]
+        },
+        {
+            "channel": "t.me/MiriamHope",
+            "path": "files/miriam-merkel.mp3",
+            "range": 8.941176470588236,
+            "pos": [
+                46,
+                81
+            ]
+        },
+        {
+            "channel": "t.me/querdenken_711",
+            "path": "files/ballweg-an-attila.mp3",
+            "range": 9.882352941176471,
+            "pos": [
+                60,
+                37
+            ]
+        },
+        {
+            "channel": "t.me/nana_lifestyler",
+            "path": "files/nana-kritik.mp3",
+            "range": 5.294117647058823,
+            "pos": [
+                63,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/samueleckert",
+            "path": "files/samuel-drosten.mp3",
+            "range": 11.058823529411764,
+            "pos": [
+                77,
+                56
+            ]
+        },
+        {
+            "channel": "t.me/AllesAusserMainstream",
+            "path": "files/bodo-weint.mp3",
+            "range": 9.882352941176471,
+            "pos": [
+                87,
+                59
             ]
         },
         {
@@ -291,23 +664,57 @@
             ]
         },
         {
+            "channel": "t.me/RALudwig",
+            "path": "files/ludwig.mp3",
+            "range": 8.0,
+            "pos": [
+                66,
+                27
+            ]
+        },
+        {
+            "channel": "t.me/RA_Däbnitz",
+            "path": "files/friedemann.mp3",
+            "range": 5.9411764705882355,
+            "pos": [
+                70,
+                17
+            ]
+        },
+        {
+            "channel": "t.me/honkforhope",
+            "path": "files/alexander.mp3",
+            "range": 5.9411764705882355,
+            "pos": [
+                86,
+                39
+            ]
+        },
+        {
+            "channel": "t.me/wordarg",
+            "path": "files/wodarg.mp3",
+            "range": 6.529411764705882,
+            "pos": [
+                46,
+                13
+            ]
+        },
+        {
+            "channel": "t.me/Eva_Herman_OFFICIAL",
+            "path": "files/herman.mp3",
+            "range": 15.117647058823529,
+            "pos": [
+                17,
+                45
+            ]
+        },
+        {
             "channel": "t.me/JANICHOFFICIAL",
             "path": "files/oliver.mp3",
             "range": 15.764705882352942,
             "pos": [
                 20,
                 70
-            ]
-        }
-    ],
-    "September": [
-        {
-            "channel": "t.me/AllesAusserMainstream",
-            "path": "files/bodo-weint.mp3",
-            "range": 9.882352941176471,
-            "pos": [
-                87,
-                59
             ]
         },
         {
@@ -318,14 +725,297 @@
                 48,
                 30
             ]
+        }
+    ],
+    "July": [
+        {
+            "channel": "t.me/WENDLER",
+            "path": "files/wendler_jul.ogg",
+            "range": 15.588235294117647,
+            "pos": [
+                30,
+                33
+            ]
+        },
+        {
+            "channel": "t.me/Xavier_Naidoo",
+            "path": "files/xavier-singt.mp3",
+            "range": 13.588235294117647,
+            "pos": [
+                30,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/aktivistmann",
+            "path": "files/aktivist_jul.ogg",
+            "range": 5.882352941176471,
+            "pos": [
+                69,
+                77
+            ]
+        },
+        {
+            "channel": "t.me/ATTILAHILDMAN",
+            "path": "files/attila_jul.ogg",
+            "range": 14.529411764705882,
+            "pos": [
+                41,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/evarosen",
+            "path": "files/eva_jul.ogg",
+            "range": 5.588235294117647,
+            "pos": [
+                52,
+                75
+            ]
+        },
+        {
+            "channel": "t.me/Schrang_TV",
+            "path": "files/heiko_jul.ogg",
+            "range": 10.882352941176471,
+            "pos": [
+                42,
+                67
+            ]
+        },
+        {
+            "channel": "t.me/MiriamHope",
+            "path": "files/miriam_jul.ogg",
+            "range": 9.941176470588236,
+            "pos": [
+                46,
+                81
+            ]
+        },
+        {
+            "channel": "t.me/nana_lifestyler",
+            "path": "files/nana_jul.ogg",
+            "range": 7.294117647058823,
+            "pos": [
+                63,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/samueleckert",
+            "path": "files/samuel_jul.mp3",
+            "range": 12.058823529411764,
+            "pos": [
+                77,
+                56
+            ]
+        },
+        {
+            "channel": "t.me/AllesAusserMainstream",
+            "path": "files/bodo_jul.mp3",
+            "range": 10.882352941176471,
+            "pos": [
+                87,
+                59
+            ]
         },
         {
             "channel": "t.me/Haintz",
-            "path": "files/markus.mp3",
-            "range": 9.882352941176471,
+            "path": "files/haintz_jul.mp3",
+            "range": 10.882352941176471,
             "pos": [
                 71,
                 40
+            ]
+        },
+        {
+            "channel": "t.me/Punkt.Preradovic",
+            "path": "files/milena.mp3",
+            "range": 4.294117647058823,
+            "pos": [
+                63,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/Wolfmut_Tiefgang",
+            "path": "files/wolfgang_jul.mp3",
+            "range": 7.882352941176471,
+            "pos": [
+                82,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/honkforhope",
+            "path": "files/alexander_jul.ogg",
+            "range": 6.9411764705882355,
+            "pos": [
+                86,
+                39
+            ]
+        },
+        {
+            "channel": "t.me/wordarg",
+            "path": "files/alexander_jul.ogg",
+            "range": 7.529411764705882,
+            "pos": [
+                46,
+                13
+            ]
+        },
+        {
+            "channel": "t.me/Eva_Herman_OFFICIAL",
+            "path": "files/herman_jul.ogg",
+            "range": 17.117647058823529,
+            "pos": [
+                17,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/JANICHOFFICIAL",
+            "path": "files/janich_jul.ogg",
+            "range": 14.764705882352942,
+            "pos": [
+                20,
+                70
+            ]
+        }
+    ],
+    "August": [
+        {
+            "channel": "t.me/WENDLER",
+            "path": "files/wendler_aug.ogg",
+            "range": 16.588235294117647,
+            "pos": [
+                30,
+                33
+            ]
+        },
+        {
+            "channel": "t.me/aktivistmann",
+            "path": "files/aktivist_aug.ogg",
+            "range": 4.882352941176471,
+            "pos": [
+                69,
+                77
+            ]
+        },
+        {
+            "channel": "t.me/ATTILAHILDMAN",
+            "path": "files/attila_aug.ogg",
+            "range": 16.529411764705882,
+            "pos": [
+                41,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/evarosen",
+            "path": "files/eva_aug.ogg",
+            "range": 7.588235294117647,
+            "pos": [
+                52,
+                75
+            ]
+        },
+        {
+            "channel": "t.me/Schrang_TV",
+            "path": "files/heiko_aug.ogg",
+            "range": 11.882352941176471,
+            "pos": [
+                42,
+                67
+            ]
+        },
+        {
+            "channel": "t.me/MiriamHope",
+            "path": "files/miriam_aug.ogg",
+            "range": 8.941176470588236,
+            "pos": [
+                46,
+                81
+            ]
+        },
+        {
+            "channel": "t.me/nana_lifestyler",
+            "path": "files/nana_aug.mp3",
+            "range": 8.294117647058823,
+            "pos": [
+                63,
+                54
+            ]
+        },
+        {
+            "channel": "t.me/samueleckert",
+            "path": "files/samuel_aug.mp3",
+            "range": 13.058823529411764,
+            "pos": [
+                77,
+                56
+            ]
+        },
+        {
+            "channel": "t.me/AllesAusserMainstream",
+            "path": "files/bodo_aug.mp3",
+            "range": 10.882352941176471,
+            "pos": [
+                87,
+                59
+            ]
+        },
+        {
+            "channel": "t.me/Wolfmut_Tiefgang",
+            "path": "files/wolfgang_aug.mp3",
+            "range": 7.882352941176471,
+            "pos": [
+                82,
+                69
+            ]
+        },
+        {
+            "channel": "t.me/honkforhope",
+            "path": "files/alexander_aug.ogg",
+            "range": 9.9411764705882355,
+            "pos": [
+                86,
+                39
+            ]
+        },
+        {
+            "channel": "t.me/Eva_Herman_OFFICIAL",
+            "path": "files/herman_aug.ogg",
+            "range": 15.117647058823529,
+            "pos": [
+                17,
+                45
+            ]
+        },
+        {
+            "channel": "t.me/JANICHOFFICIAL",
+            "path": "files/janich_aug.ogg",
+            "range": 15.764705882352942,
+            "pos": [
+                20,
+                70
+            ]
+        },
+        {
+            "channel": "t.me/querdenken_711",
+            "path": "files/ballweg-an-attila.mp3",
+            "range": 9.882352941176471,
+            "pos": [
+                60,
+                37
+            ]
+        },
+        {
+            "channel": "t.me/Silberjunge",
+            "path": "files/thorsten.mp3",
+            "range": 8.764705882352942,
+            "pos": [
+                48,
+                30
             ]
         }
     ]

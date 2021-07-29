@@ -1,5 +1,5 @@
 let data;
-let months = ["July", "August", "September"];
+let months = ["March", "April", "May", "June", "July", "August"];
 var starter;
 var current;
 var files_index;
@@ -36,34 +36,12 @@ function preload() {
     // load cursor img
     img = loadImage('assets/hear-no-evil@2x.png');
 
-    // load data
-    data = loadJSON('json/combined.json');
+    // load data 
+    data = loadJSON('json/combined.json', loadSounds);
 }
 
-function setup() {
-    createCanvas(windowWidth, windowHeight);
-    // vector for saving incoming mouse postion
-    vector = createVector(-100, -100);
-
-    delay = new p5.Delay();
-
-    // NODE: Start a socket connection to the server
-    // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('https://querdenken.herokuapp.com');
-
-    socket.on('mouse', 
-    // when we receive data
-        function(data) {
-
-            // we are receiving!
-            console.log('data received');
-            
-            // update coordinates
-            vector.x = data.x;
-            vector.y = data.y;
-        }
-    ); 
-
+// create loadSound via callback function
+function loadSounds(data) {
     // for each month
     for (let j = 0; j < months.length; j++) {
         let sublist = [];
@@ -81,9 +59,34 @@ function setup() {
 
         files.push(sublist);
     };
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    // vector for saving incoming mouse postion
+    vector = createVector(-100, -100);
+
+    delay = new p5.Delay();
+
+    // NODE: Start a socket connection to the server
+    // 'https://querdenken.herokuapp.com' || http://localhost:3000
+    socket = io.connect('http://localhost:3000');
+
+    socket.on('mouse', 
+    // when we receive data
+        function(data) {
+
+            // we are receiving!
+            console.log('data received');
+            
+            // update coordinates
+            vector.x = data.x;
+            vector.y = data.y;
+        }
+    );
 
     // set starter month
-    starter = "July";
+    starter = "March";
     files_index = 0;
 
     fillArrays();
@@ -109,7 +112,7 @@ function fillArrays() {
         // fill the position array 
         append(positions, [(data[starter][i]["pos"][0] * windowWidth) / 100, (data[starter][i]["pos"][1] * windowHeight) / 100]);
         // fill the range array 
-        append(range, [data[starter][i]["range"] * windowWidth / 50]);
+        append(range, [data[starter][i]["range"] * windowWidth / 40]);
         // fill channel array
         append(channels, [data[starter][i]["channel"]]);
         // fill the echo_state array
@@ -142,11 +145,30 @@ function startAudio() {
 
 function createMonthSelector() {
 
+    let div1 = createDiv();
+    div1.addClass('overlay');
+
+    // create div to hold buttons
+    let div2 = createDiv();
+
     for (i = 0; i < months.length; i++) {
+        // for each month create a button, assign class
         var btn = createButton(months[i]);
+        btn.addClass('selector');
+
+        // make child of div
+        div2.child(btn);
+
+        // create array of button and month
         var sub = [btn ,months[i]];
+        // add to selectors array
         selectors.push(sub);
     }
+
+    let div3 = createDiv('choose month');
+    div3.addClass('info');
+    div1.child(div2);
+    div1.child(div3);
 }
 
 function checkStatus() {
@@ -223,7 +245,7 @@ function draw() {
 
         // draw the other mouse
         fill(255, 0, 0);
-        ellipse(vector.x, vector.y, 100);
+        ellipse(vector.x, vector.y, 10);
     }
 }
 
