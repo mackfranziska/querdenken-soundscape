@@ -119,7 +119,7 @@ function setup() {
     //// Start a socket connection to the server
     //// Some day we would run this server somewhere else
     //// 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('https://querdenken.herokuapp.com');
+    socket = io.connect('http://localhost:3000');
 
     //// ___________ NODE JS STUFF _____________
 
@@ -219,9 +219,6 @@ function draw() {
 
     //// ___________ NODE JS STUFF _____________
 
-    // Send the mouse coordinates
-    sendmouse(mouseX,mouseY);
-
     // draw the other mouse
     socket.on('mouse', mouseMirror); 
 
@@ -230,6 +227,13 @@ function draw() {
     ellipse(vector.x, vector.y, 100);
 
     //// ___________ NODE JS STUFF _____________
+}
+
+function mouseMoved() {
+
+    // Send the mouse coordinates
+    sendmouse(mouseX,mouseY);
+    
 }
 
 // send mouse x and y position

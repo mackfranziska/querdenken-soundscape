@@ -1,14 +1,19 @@
 /node_modules
 .DS_Store
-public/websockets-sample-sketch.js
+public/test/websockets-sample-sketch.js
 server-template.js
-public/sketch-echo.js
-public/sketch-sample.js
-public/test.ino
-public/sketch-echo.js
-public/sketch.js
-public/positions.json
-public/positions.svg
+public/test/sketch-echo.js
+public/test/sketch-sample.js
+public/test/test.ino
+public/test/sketch.js
+public/test/positions.svg
 /.ipynb_checkpoints
 /assets/ear@2x.png
-postional arguments.ipynb
+python/postional arguments.ipynb
+public/test/sketch-clean.js
+public/test/sketch-node-plain.js
+public/test/sketch-flexCanvas.js
+public/test/sketch-json.js
+python/write-json.ipynb
+public/json/July.json
+public/json/August.json

@@ -7,7 +7,7 @@ canvas {
   display: block;
 }
 
-button {
+.start {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -26,14 +26,14 @@ button {
   text-align: center;
 }
 
-button:hover{
+.start:hover{
   color: white;
   background-color: rgb(168, 168, 168);
 
 }
 
 @media all and (max-width:30em){
-  button {
+  .start {
     display: block;
     margin:0.4em auto;
     }
