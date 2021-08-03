@@ -1,8 +1,7 @@
 let data;
 let months = ["March", "April", "May", "June", "July", "August"];
-var starter;
-var current;
-var files_index;
+var starter = "March";
+var files_index = 0;
 
 var button;
 var selectors = [];
@@ -23,13 +22,20 @@ let state = [];
 let status;
 let echos = [];
 let echo_state = [];
+let pcounter = 0;
+let totalfiles = 112;
 
 var socket;
 let vector;
+let clients = [];
+let client_arr = {};
+let colors = ['#EC7585', '#B397F6', '#4C3EFF', '#00BEA6'];
 
-function preload() {
+function setup() {
 
-    // load fonts
+    createCanvas(windowWidth, windowHeight);
+
+    // LOAD STUFF
     proxima_bold = loadFont('fonts/Mark Simonson - Proxima Nova Bold.otf');
     proxima_regular = loadFont('fonts/Mark Simonson - Proxima Nova Regular.otf');
 
@@ -38,64 +44,37 @@ function preload() {
 
     // load data 
     data = loadJSON('json/combined.json', loadSounds);
-}
-
-// create loadSound via callback function
-function loadSounds(data) {
-    // for each month
-    for (let j = 0; j < months.length; j++) {
-        let sublist = [];
-
-        // for each protagonist
-        for (let i = 0; i < data[months[j]]["length"]; i++) {
-            // access path
-            let path = data[months[j]][i]["path"];
-            // load soundfile at path
-            let file = loadSound(path);
-            // append to files
-            sublist.push(file);
-            console.log('sound loaded at: ' + path);
-        }
-
-        files.push(sublist);
-    };
-}
-
-function setup() {
-    createCanvas(windowWidth, windowHeight);
-    // vector for saving incoming mouse postion
-    vector = createVector(-100, -100);
-
-    delay = new p5.Delay();
 
     // NODE: Start a socket connection to the server
     // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('https://querdenken.herokuapp.com');
+    socket = io.connect('http://localhost:3000');
+
+    // vector for saving incoming mouse postion
+    vector = createVector(-100, -100);
 
     socket.on('mouse', 
     // when we receive data
         function(data) {
 
             // we are receiving!
-            console.log('data received');
-            
-            // update coordinates
-            vector.x = data.x;
-            vector.y = data.y;
+            console.log('data received from: ' + data.id);
+
+            if (clients.includes(data.id) == false) {
+                client_arr[data.id] = [data.x, data.y, random(colors)];
+
+            } else { 
+                client_arr.forEach(item => {
+                    if (item == data.id) {
+                        // update coordinates
+                        client_arr[item][0] = data.x;
+                        client_arr[item][1] = data.y;
+                    }
+                });
+            }
         }
     );
 
-    // set starter month
-    starter = "March";
-    files_index = 0;
-
-    fillArrays();
-    createSoundObjects();
-
-    // create button to start and stop sound
-    button = createButton('press to start');
-    button.addClass('start');
-    button.mousePressed(startAudio);
+    delay = new p5.Delay();
 
     // check hover status
     setInterval(checkStatus, 1000);
@@ -104,6 +83,43 @@ function setup() {
     // create echo
     // setInterval(createEcho, 1000);
 
+}
+
+function loadSounds(data) { // load sounds via callback function
+
+    // for each month
+    for (let j = 0; j < months.length; j++) {
+        let sublist = [];
+
+        // for each protagonist
+        for (let i = 0; i < data[months[j]]["length"]; i++) {
+
+            // access path
+            let path = data[months[j]][i]["path"];
+            // load soundfile at path
+            let file = loadSound(path, function counter() { // callback
+                
+                // count files loaded
+                console.log(pcounter);
+                pcounter++;
+
+                if (pcounter == totalfiles) { // if last file was loaded
+            
+                    fillArrays();
+                    createSoundObjects();
+            
+                    // create button to start and stop sound
+                    button = createButton('press to start');
+                    button.addClass('start');
+                    button.mousePressed(startAudio);
+                }
+            });
+
+            // append to files
+            sublist.push(file);
+        }
+        files.push(sublist);
+    };
 }
 
 function fillArrays() {
@@ -125,7 +141,8 @@ function createSoundObjects() {
 
     // create sound objects for starter month
     for (let i = 0; i < data[starter]["length"]; i++) {
-        let thing = new Sound(positions[i][0], positions[i][1], channels[i], files[files_index][i], range[i]);
+        let thing = new Sound(positions[i][0], positions[i][1], channels[i], files[files_index][i], 
+                              range[i], files[files_index][i].duration());
         things.push(thing);
     }
 }
@@ -133,7 +150,7 @@ function createSoundObjects() {
 function startAudio() {
 
     for (i = 0; i < things.length; i++) {
-        things[i].sound.loop();
+        things[i].sound.loop(); // .loop()
         button.hide();
         noCursor();
         toggle = true;
@@ -218,54 +235,93 @@ function createEcho() {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 
-    positions = [];
-    range = [];
-    things = [];
-    echo_state = [];
+    if (pcounter == totalfiles) { // only allow recalculation if all files are loaded
+        positions = [];
+        range = [];
+        things = [];
+        echo_state = [];
 
-    fillArrays();
-    createSoundObjects();
+        fillArrays();
+        createSoundObjects();
+    }
 }
 
 function draw() {
     background(15, 22, 32);
 
-    if (toggle == true) {
+    if (pcounter < totalfiles) { // loading animation
+
+        noStroke();
+        fill(255);
+        textFont(proxima_bold);
+        textSize(30);
+        textAlign(CENTER)
+
+        var percent = floor(pcounter / 112 * 100);
+        text(percent + '%', windowWidth/2, windowHeight/2 );
+
+        textFont(proxima_regular);
+        textSize(13);
+        text('loaded', windowWidth/2, windowHeight/2 + 20 );
+    }
+
+    if (toggle == true) { // if button has been pressed
 
         for (i = 0; i < things.length; i++) {
-            //things[i].show();
-            things[i].outline();
-            things[i].outlineArea(mouseX, mouseY);
-            things[i].labelHover(mouseX, mouseY);
+            var timestamp = things[i].sound.bufferSourceNode.context.currentTime;
+
             things[i].controlVolume(mouseX, mouseY);
+            things[i].hovered(mouseX, mouseY);
+
+            if (status == false) {
+                things[i].outline();
+            } 
+        };
+
+        for (i = 0; i < things.length; i++) {
+            things[i].hovered(mouseX, mouseY);
+
+            if (status == true) {
+                things[i].fillArea(mouseX, mouseY);
+                things[i].fillCircle(timestamp, mouseX, mouseY);
+                things[i].addViewcount(mouseX, mouseY);
+            } 
+        };
+
+        for (i = 0; i < things.length; i++) {
+            things[i].labelHover(mouseX, mouseY);
         };
 
         img.resize(24, 24);
         image(img, mouseX - 12, mouseY - 12);
 
-        // draw the other mouse
-        fill(255, 0, 0);
-        ellipse(vector.x, vector.y, 10);
+        // draw the other mice
+        for (let c in client_arr) {
+
+            fill('#EC7585'); // fill(client_arr[c][2]);
+            ellipse(client_arr[c][0], client_arr[c][1], 8);
+        }
     }
 }
 
 function mouseMoved() {
 
     // Send the mouse coordinates
-    sendmouse(mouseX,mouseY);
+    sendmouse(mouseX, mouseY, socket.id);
 
 }
 
-function sendmouse(xpos, ypos) {
+function sendmouse(xpos, ypos, ID) {
 
     // send mouse x and y position
     // We are sending!
-    console.log('sendmouse: ' + xpos + '' + ypos);
+    // console.log('sendmouse: ' + xpos + '' + ypos);
 
     // Make a little object with  and y
     var data = {
         x: xpos,
-        y: ypos
+        y: ypos,
+        id: ID
     };
 
     // Send that object to the socket
@@ -315,12 +371,13 @@ function mousePressed() {
 }
 
 class Sound {
-    constructor(x, y, name, sound, range) {
+    constructor(x, y, name, sound, range, duration) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.sound = sound;
         this.range = range;
+        this.duration = duration;
     }
 
     show() {
@@ -331,33 +388,31 @@ class Sound {
         ellipse(this.x, this.y, 5);
     }
 
-    outlineArea(x, y) {
+    fillArea(x, y) {
 
         noStroke();
-        fill(255, 20);
+        fill(47,52,59,100);
 
-        let d = dist(x, y, this.x, this.y);
-
-        if (d < this.range / 2) {
-            drawingContext.setLineDash([0.5, 3]);
-            // outline area
-            ellipse(this.x, this.y, this.range);
-        }
+        drawingContext.setLineDash([0.5, 3]);
+        // outline area
+        ellipse(this.x, this.y, this.range/1.5+2.5);
     }
 
     outline() {
 
-        stroke(100);
+        // strokeWeight(1);
+        stroke(47,52,59,100);
         noFill();
-        drawingContext.setLineDash([5, 7]);
+        // drawingContext.setLineDash([2, 2]);
 
         // outline area
-        ellipse(this.x, this.y, this.range);
+        ellipse(this.x, this.y, this.range/1.5);
+
     }
 
     labelHover(x, y) {
         noStroke();
-        fill(255);
+        fill('#4BE1C3');
         textFont(proxima_regular);
         textSize(13);
         textAlign(CENTER)
@@ -365,14 +420,14 @@ class Sound {
         //add text label
         let d = dist(x, y, this.x, this.y);
 
-        if (d < (this.range / 5)) {
+        if (d < (this.range / 3)) {
             text(this.name, this.x, this.y + 5);
         }
     }
 
     controlVolume(x, y) {
         let d = dist(this.x, this.y, x, y);
-        let volume = map(d, 0, this.range / 2 + 10, 4, 0);
+        let volume = map(d, 0, this.range / 3 + 30, 4, 0);
 
         // cut off if value is negative
         if (volume > 0) {
@@ -385,10 +440,45 @@ class Sound {
     hovered(x, y) {
         let d = dist(x, y, this.x, this.y);
 
-        if (d < this.range / 2) {
+        if (d < this.range / 3) {
             status = true;
         } else {
             status = false;
         }
+    }
+
+    fillCircle(timestamp, x, y) {
+
+        var percentage = (timestamp / this.duration) * 100;
+        var stop = map(percentage, 0, 100, -90, 270);
+
+        drawingContext.setLineDash([0, 0]);
+        strokeWeight(4);
+        noFill();
+
+        angleMode(DEGREES);
+
+        stroke('#E5E5E5');
+        arc(this.x, this.y, this.range/1.5, this.range/1.5, -90, stop);
+    }
+
+    addViewcount(x, y) {
+
+        //add viewcount label
+        let boxX = this.x + this.range/3-this.range/6;
+        let boxY = this.y + this.range/3;
+
+        rectMode(CENTER);
+        noStroke();
+        fill('#2F343B');
+
+        rect(boxX+3 , boxY+2, 50, 20, 4);
+
+        fill(255);
+        textFont(proxima_regular);
+        textSize(13);
+        textAlign(LEFT, CENTER);
+
+        text('12K', boxX , boxY);
     }
 }
