@@ -47,7 +47,7 @@ function setup() {
 
     // NODE: Start a socket connection to the server
     // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('https://querdenken.herokuapp.com');
 
     // vector for saving incoming mouse postion
     vector = createVector(-100, -100);
