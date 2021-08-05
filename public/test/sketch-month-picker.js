@@ -1,5 +1,5 @@
 let data;
-let months = ["March", "April", "May", "June", "July", "August"];
+let months = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March21", "April21", "May21", "June21", "July21"];
 var starter = "March";
 var files_index = 0;
 
@@ -19,7 +19,8 @@ let proxima_regular;
 let delay;
 let counter = [];
 let state = [];
-let status;
+let status; // hovered (own mouse)
+let m_status; // hovered (other mice)
 let echos = [];
 let echo_state = [];
 let pcounter = 0;
@@ -43,11 +44,11 @@ function setup() {
     img = loadImage('assets/hear-no-evil@2x.png');
 
     // load data 
-    data = loadJSON('json/combined.json', loadSounds);
+    data = loadJSON('json/files.json', loadSounds);
 
     // NODE: Start a socket connection to the server
     // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('https://querdenken.herokuapp.com');
+    socket = io.connect('http://localhost:3000');
 
     // vector for saving incoming mouse postion
     vector = createVector(-100, -100);
@@ -267,29 +268,33 @@ function draw() {
 
     if (toggle == true) { // if button has been pressed
 
-        for (i = 0; i < things.length; i++) {
+        for (i = 0; i < things.length; i++) { // loop through sound objects
             var timestamp = things[i].sound.bufferSourceNode.context.currentTime;
 
-            things[i].controlVolume(mouseX, mouseY);
-            things[i].hovered(mouseX, mouseY);
+            things[i].controlVolume(mouseX, mouseY, client_arr); // change volume
+            things[i].hovered(mouseX, mouseY, client_arr); // determine if hovered over
 
-            if (status == false) {
-                things[i].outline();
+            if ((status == false) || (m_status == false)) {
+                things[i].outline(); // if not, outline
             } 
         };
 
-        for (i = 0; i < things.length; i++) {
-            things[i].hovered(mouseX, mouseY);
+        for (i = 0; i < things.length; i++) { // loop through sound objects
+            things[i].hovered(mouseX, mouseY, client_arr); // determine if hovered over
 
-            if (status == true) {
-                things[i].fillArea(mouseX, mouseY);
-                things[i].fillCircle(timestamp, mouseX, mouseY);
-                things[i].addViewcount(mouseX, mouseY);
+            if ((status == true) || (m_status == true)){ // if yes...
+                things[i].fillArea(); // highlight area
+                things[i].fillCircle(timestamp);
+                things[i].addViewcount();
             } 
         };
 
-        for (i = 0; i < things.length; i++) {
-            things[i].labelHover(mouseX, mouseY);
+        for (i = 0; i < things.length; i++) { // loop through sound objects
+            things[i].hovered(mouseX, mouseY, client_arr);
+
+            if ((status == true) || (m_status == true)){ // add label on top
+                things[i].labelHover();
+            } 
         };
 
         img.resize(24, 24);
@@ -388,7 +393,7 @@ class Sound {
         ellipse(this.x, this.y, 5);
     }
 
-    fillArea(x, y) {
+    fillArea() {
 
         noStroke();
         fill(47,52,59,100);
@@ -410,22 +415,18 @@ class Sound {
 
     }
 
-    labelHover(x, y) {
+    labelHover() {
         noStroke();
         fill('#4BE1C3');
         textFont(proxima_regular);
         textSize(13);
         textAlign(CENTER)
 
-        //add text label
-        let d = dist(x, y, this.x, this.y);
-
-        if (d < (this.range / 3)) {
-            text(this.name, this.x, this.y + 5);
-        }
+        text(this.name, this.x, this.y + 5);
     }
 
-    controlVolume(x, y) {
+    controlVolume(x, y, mice) {
+        // for your own mouse
         let d = dist(this.x, this.y, x, y);
         let volume = map(d, 0, this.range / 3 + 30, 4, 0);
 
@@ -435,9 +436,24 @@ class Sound {
         } else {
             this.sound.amp(0);
         }
+
+        // for other visitors
+        for (let c in mice) {
+
+            let md = dist(this.x, this.y, mice[c][0], mice[c][1]);
+            let mvolume = map(md, 0, this.range / 3 + 30, 4, 0);
+
+            if (mvolume > 0) {
+                this.sound.amp(mvolume);
+            } else {
+                this.sound.amp(0);
+            }
+            
+        }
     }
 
-    hovered(x, y) {
+    hovered(x, y, mice) {
+        // for mouse
         let d = dist(x, y, this.x, this.y);
 
         if (d < this.range / 3) {
@@ -445,9 +461,21 @@ class Sound {
         } else {
             status = false;
         }
+
+        // for other mice
+        for (let c in mice) {
+
+            let md = dist(this.x, this.y, mice[c][0], mice[c][1]);
+
+            if (md < this.range / 3) {
+                m_status = true;
+            } else {
+                m_status = false;
+            }
+        }
     }
 
-    fillCircle(timestamp, x, y) {
+    fillCircle(timestamp) {
 
         var percentage = (timestamp / this.duration) * 100;
         var stop = map(percentage, 0, 100, -90, 270);
@@ -462,7 +490,7 @@ class Sound {
         arc(this.x, this.y, this.range/1.5, this.range/1.5, -90, stop);
     }
 
-    addViewcount(x, y) {
+    addViewcount() {
 
         //add viewcount label
         let boxX = this.x + this.range/3-this.range/6;
