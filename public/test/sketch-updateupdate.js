@@ -4,6 +4,7 @@ var starter = "March";
 var files_index = 0;
 
 var button;
+var main;
 var selectors = [];
 let toggle = false;
 
@@ -11,6 +12,7 @@ var files = [];
 var range = [];
 var positions = [];
 var channels = [];
+var views = [];
 let things = [];
 
 let proxima_bold;
@@ -24,7 +26,8 @@ let m_status; // hovered (other mice)
 let echos = [];
 let echo_state = [];
 let pcounter = 0;
-let totalfiles = 112;
+let totalfiles = 209;
+let things_r = [];
 
 var socket;
 let vector;
@@ -42,6 +45,7 @@ function setup() {
 
     // load cursor img
     img = loadImage('assets/hear-no-evil@2x.png');
+    viewcount_img = loadImage('assets/viewcount@2x.png');    
 
     // load data 
     data = loadJSON('json/files.json', loadSounds);
@@ -112,6 +116,11 @@ function loadSounds(data) { // load sounds via callback function
                     // create button to start and stop sound
                     button = createButton('press to start');
                     button.addClass('start');
+                    
+                    // nest inside main element
+                    main = select("main");
+                    main.child(button);
+
                     button.mousePressed(startAudio);
                 }
             });
@@ -132,6 +141,8 @@ function fillArrays() {
         append(range, [data[starter][i]["range"] * windowWidth / 40]);
         // fill channel array
         append(channels, [data[starter][i]["channel"]]);
+        // fill viewcount array
+        append(views, [data[starter][i]["views"]]);
         // fill the echo_state array
         let echoed = false;
         echo_state.push(echoed);
@@ -140,11 +151,15 @@ function fillArrays() {
 
 function createSoundObjects() {
 
+    things_r.length = 0; // this array is for storing the bubble radius
+
     // create sound objects for starter month
     for (let i = 0; i < data[starter]["length"]; i++) {
         let thing = new Sound(positions[i][0], positions[i][1], channels[i], files[files_index][i], 
-                              range[i], files[files_index][i].duration());
+                              range[i], files[files_index][i].duration(), views[i]);
         things.push(thing);
+
+        things_r.push(0); // fill radius array with placeholders
     }
 }
 
@@ -163,20 +178,42 @@ function startAudio() {
 
 function createMonthSelector() {
 
-    let div1 = createDiv();
-    div1.addClass('overlay');
+    let overlay = createDiv().addClass('overlay');
+    main.child(overlay);
 
-    // create div to hold buttons
-    let div2 = createDiv();
+    // create calendar div to hold years
+    let cal = createDiv().addClass('calendar');
+    overlay.child(cal);
+
+    // div for each year
+    let year2020 = createDiv().addClass('year');
+    let year2021 = createDiv().addClass('year');
+
+    // create unselectable buttons (beginning)
+    let l_b = ['JAN', 'FEB'];
+    l_b.forEach(mon => {
+        let btn_dead = createButton(mon).addClass('dead');
+        year2020.child(btn_dead);
+    });
 
     for (i = 0; i < months.length; i++) {
         // for each month create a button, assign class
-        let btn_txt = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
+        let btn_txt = ["MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL"];
+        // let btn_txt = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
+        
         var btn = createButton(btn_txt[i]);
-        btn.addClass('selector');
 
-        // make child of div
-        div2.child(btn);
+        if (i == months.indexOf(starter)) {
+            btn.addClass('infocus'); // set focus on starter button
+        } else {
+            btn.addClass('selector'); // all others get selector class
+        }
+
+        if (i < 10) {
+            year2020.child(btn);
+        } else {
+            year2021.child(btn);
+        }
 
         // create array of button and month
         var sub = [btn ,months[i]];
@@ -184,10 +221,26 @@ function createMonthSelector() {
         selectors.push(sub);
     }
 
-    let div3 = createDiv('choose month');
-    div3.addClass('info');
-    div1.child(div2);
-    div1.child(div3);
+    // create more unselectable buttons (end of 2021)
+    let l_e = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    l_e.forEach(mon => {
+        let btn_dead = createButton(mon).addClass('dead');
+        year2021.child(btn_dead);
+    });
+
+    let cont1 = createDiv('2020').addClass('legend');
+    year2020.child(cont1);
+
+    let cont2 = createDiv('2021').addClass('legend');
+    year2021.child(cont2);
+    
+    cal.child(year2020);
+    cal.child(year2021);
+
+    // instruction
+    let info = createDiv('choose month');
+    info.addClass('info');
+    overlay.child(info);
 }
 
 function checkStatus() {
@@ -259,7 +312,7 @@ function draw() {
         textSize(30);
         textAlign(CENTER)
 
-        var percent = floor(pcounter / 112 * 100);
+        var percent = floor(pcounter / totalfiles * 100);
         text(percent + '%', windowWidth/2, windowHeight/2 );
 
         textFont(proxima_regular);
@@ -270,23 +323,34 @@ function draw() {
     if (toggle == true) { // if button has been pressed
 
         for (i = 0; i < things.length; i++) { // loop through sound objects
-            var timestamp = things[i].sound.bufferSourceNode.context.currentTime;
 
             things[i].controlVolume(mouseX, mouseY, client_arr); // change volume
             things[i].hovered(mouseX, mouseY, client_arr); // determine if hovered over
 
             if ((status == false) || (m_status == false)) {
-                things[i].outline(); // if not, outline
+                things[i].outline(things_r[i]); // if not, outline
             } 
+
+            let interval = things[i].range / 10;
+
+            if (things_r[i] < things[i].range) {
+                things_r[i] = things_r[i] + interval;
+            }
+        
         };
 
         for (i = 0; i < things.length; i++) { // loop through sound objects
             things[i].hovered(mouseX, mouseY, client_arr); // determine if hovered over
 
+            var timestamp = things[i].sound.bufferSourceNode.context.currentTime;
+
             if ((status == true) || (m_status == true)){ // if yes...
-                things[i].fillArea(); // highlight area
-                things[i].fillCircle(timestamp);
-                things[i].addViewcount();
+                things[i].fillArea(things_r[i]); // highlight area
+                things[i].fillCircle(timestamp, things_r[i]);
+
+                if (things_r[i] >= things[i].range){
+                    things[i].addViewcount(things_r[i]);
+                }
             } 
         };
 
@@ -337,11 +401,14 @@ function sendmouse(xpos, ypos, ID) {
 function mousePressed() {
 
     // for each month selector button
-    selectors.forEach(pair => {
-        // if pressed
+    selectors.forEach(pair => { // if pressed
+
         pair[0].mousePressed(doit);
 
         function doit() {
+
+            // change starter month button class
+            selectors[months.indexOf(starter)][0].removeClass("infocus").addClass("selector");
 
             // is starter month the same as button?
             if (starter != pair[1]) {
@@ -377,42 +444,32 @@ function mousePressed() {
 }
 
 class Sound {
-    constructor(x, y, name, sound, range, duration) {
+    constructor(x, y, name, sound, range, duration, views) {
         this.x = x;
         this.y = y;
         this.name = name;
         this.sound = sound;
         this.range = range;
         this.duration = duration;
+        this.views = views;
     }
 
-    show() {
-        noStroke();
-        fill(100);
-
-        // draw a circle centered at each point
-        ellipse(this.x, this.y, 5);
-    }
-
-    fillArea() {
+    fillArea(r) {
 
         noStroke();
         fill(47,52,59,100);
 
-        drawingContext.setLineDash([0.5, 3]);
-        // outline area
-        ellipse(this.x, this.y, this.range/1.5+2.5);
+        ellipse(this.x, this.y, r/1.5+2.5);
     }
 
-    outline() {
+    outline(r) {
 
-        // strokeWeight(1);
+        strokeWeight(4);
         stroke(47,52,59,100);
         noFill();
-        // drawingContext.setLineDash([2, 2]);
 
         // outline area
-        ellipse(this.x, this.y, this.range/1.5);
+        ellipse(this.x, this.y, r/1.5); // this.range
 
     }
 
@@ -476,38 +533,41 @@ class Sound {
         }
     }
 
-    fillCircle(timestamp) {
+    fillCircle(timestamp, r) {
 
         var percentage = (timestamp / this.duration) * 100;
         var stop = map(percentage, 0, 100, -90, 270);
 
-        drawingContext.setLineDash([0, 0]);
+        // drawingContext.setLineDash([0, 0]);
         strokeWeight(4);
         noFill();
 
         angleMode(DEGREES);
 
         stroke('#E5E5E5');
-        arc(this.x, this.y, this.range/1.5, this.range/1.5, -90, stop);
+        arc(this.x, this.y, r/1.5, r/1.5, -90, stop);
     }
 
-    addViewcount() {
+    addViewcount(r) {
 
         //add viewcount label
-        let boxX = this.x + this.range/3-this.range/6;
-        let boxY = this.y + this.range/3;
+        let boxX = this.x + r/6.5;
+        let boxY = this.y + r/3.5;
 
-        rectMode(CENTER);
+        let width = textWidth(this.views);
+
+        rectMode(CORNER);
         noStroke();
         fill('#2F343B');
-
-        rect(boxX+3 , boxY+2, 50, 20, 4);
+        rect(boxX, boxY, width+32, 20, 4);
 
         fill(255);
         textFont(proxima_regular);
         textSize(13);
         textAlign(LEFT, CENTER);
+        text(this.views, boxX+25, boxY+9);
 
-        text('12K', boxX , boxY);
+        viewcount_img.resize(15, 10);
+        image(viewcount_img, boxX+5, boxY+5);
     }
 }

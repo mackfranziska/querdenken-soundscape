@@ -15,7 +15,9 @@ public/test/sketch-node-plain.js
 public/test/sketch-flexCanvas.js
 public/test/sketch-json.js
 python/write-json.ipynb
-public/json/July.json
-public/json/August.json
 public/test/sketch-socket-array.js
+public/test/sketch-update.js
+public/test/sketch-month-picker.js
+public/json/combined.json
+public/sketch-audionode.js
 
