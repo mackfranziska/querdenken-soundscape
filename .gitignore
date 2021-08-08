@@ -20,4 +20,8 @@ public/test/sketch-update.js
 public/test/sketch-month-picker.js
 public/json/combined.json
 public/sketch-audionode.js
-
+public/test/sketch-loading-copy.js
+public/test/sketch-loading.js
+public/test/sketch-twopage.js
+public/test/sketch-sockets.js
+public/test/sketch-updateupdate.js

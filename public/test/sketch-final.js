@@ -2,49 +2,41 @@ let data;
 let months = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March21", "April21", "May21", "June21", "July21"];
 var starter = "March21";
 
-var button;
-var main;
-var selectors = [];
-let toggle = false;
+var cvs, button, main, about, intro, txtsection, overlay, selectors = [], disable, dialogue, box, p;
+let toggle = false, disc_toggle = false, backandforth = 0;
 
-var files = [];
-var range = [];
-var positions = [];
-var channels = [];
-var views = [];
-let things = [];
+var files = [], range = [], positions = [], channels = [], views = [], things = [], things_r = [];
 
-let proxima_bold;
-let proxima_regular;
+let proxima_bold, proxima_regular, neuzeit;
 
-let delay;
-let counter = [];
-let state = [];
 let status; // hovered (own mouse)
 let m_status; // hovered (other mice)
-let echos = [];
-let echo_state = [];
-let pcounter = 0;
-let totalfiles = 209;
-let things_r = [];
 
-var socket;
-let vector;
-let clients = [];
-let client_arr = {};
+let delay;
+let counter = [], state = [];
+let echos = [], echo_state = [];
+
+let pcounter = 0, totalfiles = 209;
+
+var socket, vector;
+let clients = [], client_arr = {};
 let colors = ['#EC7585', '#B397F6', '#4C3EFF', '#00BEA6'];
 
 function setup() {
 
-    createCanvas(windowWidth-15, windowHeight);
+    cvs = createCanvas(windowWidth, windowHeight);
+    cvs.hide();
 
     // LOAD STUFF
     proxima_bold = loadFont('fonts/Mark Simonson - Proxima Nova Bold.otf');
     proxima_regular = loadFont('fonts/Mark Simonson - Proxima Nova Regular.otf');
 
+    neuzeit = loadFont('https://use.typekit.net/wtv7bap.css');
+
     // load cursor img
     img = loadImage('assets/hear-no-evil@2x.png');
-    viewcount_img = loadImage('assets/viewcount@2x.png');    
+    viewcount_img = loadImage('assets/viewcount@2x.png');   
+    cursor_img = loadImage('assets/cursor@2x.png');
 
     // load data 
     data = loadJSON('json/files.json', loadSounds);
@@ -91,6 +83,12 @@ function setup() {
 
 function loadSounds(data) { // load sounds via callback function
 
+    let placehldr = createButton('0').addClass('placeholder');
+
+    // nest inside main element
+    main = select("main");
+    main.child(placehldr);
+
     // for each month
     for (let j = 0; j < months.length; j++) {
         let sublist = [];
@@ -107,18 +105,21 @@ function loadSounds(data) { // load sounds via callback function
                 console.log(pcounter);
                 pcounter++;
 
+                var percent = floor(pcounter / totalfiles * 100);
+                placehldr.html(percent + '%');
+
                 if (pcounter == totalfiles) { // if last file was loaded
             
                     fillArrays();
                     createSoundObjects();
+
+                    // remove placeholer
+                    placehldr.hide();
             
                     // create button to start and stop sound
-                    button = createButton('press to start');
+                    button = createButton('take me there');
                     button.addClass('start');
-                    
-                    // nest inside main element
-                    main = select("main");
-                    main.child(button);
+                    main.child(button); // nest inside main element
 
                     button.mousePressed(startAudio);
                 }
@@ -162,84 +163,140 @@ function createSoundObjects() {
     }
 }
 
-function startAudio() {
+function startAudio() { //
 
-    for (i = 0; i < things.length; i++) {
-        things[i].sound.loop(); // .loop()
-        button.hide();
-        noCursor();
-        toggle = true;
-    }
+    // hide all the intro stuff
+    button.hide();
+    intro = select(".intro");
+    intro.hide();
+    txtsection = select(".textsection");
+    txtsection.hide();
+
+    cvs.show();
 
     // create month selector
     createMonthSelector();
+
+    if (backandforth == 0) { // if visualization appears for first time
+        // transparent overlay
+        disable = createDiv().addClass('disable');
+
+        // disclaimer dialogue window
+        // button
+        dialogue = createButton('OK').addClass('disclaimer');
+
+        // paragraph
+        p = createP("Disclaimer: The voice messages on this website have not been<br>content-reviewed and may contain hate speech and medical misinformation. <br>I do not endorse their authors.");
+        p.addClass('disclaimertext');
+
+        box = createDiv().addClass('popup'); // box
+        box.parent(main); // organize
+        p.parent(box);
+        dialogue.parent(box);
+    } else {
+        disable.show();
+        box.style('display', 'flex');
+    }
+
+    dialogue.mousePressed(function() { // if ok is pressed, start sound
+
+        for (i = 0; i < things.length; i++) {
+            things[i].sound.loop(); // .loop()
+    
+            toggle = true;
+            disc_toggle = true;
+            noCursor();
+
+            box.hide(); // hide overlay and dialogue box
+            disable.hide();
+        }
+    });
 }
 
 function createMonthSelector() {
 
-    let overlay = createDiv().addClass('overlay');
-    main.child(overlay);
+    if (backandforth == 0) { // if visualization appears for first time
 
-    // create calendar div to hold years
-    let cal = createDiv().addClass('calendar');
-    overlay.child(cal);
+        overlay = createDiv().addClass('overlay');
+        main.child(overlay);
 
-    // div for each year
-    let year2020 = createDiv().addClass('year');
-    let year2021 = createDiv().addClass('year');
+        let container = createDiv().addClass('container');
+        overlay.child(container);
 
-    // create unselectable buttons (beginning)
-    let l_b = ['JAN', 'FEB'];
-    l_b.forEach(mon => {
-        let btn_dead = createButton(mon).addClass('dead');
-        year2020.child(btn_dead);
-    });
+        // create calendar div to hold years
+        let cal = createDiv().addClass('calendar');
+        container.child(cal);
 
-    for (i = 0; i < months.length; i++) {
-        // for each month create a button, assign class
-        let btn_txt = ["MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL"];
-        // let btn_txt = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
+        about = createDiv('About the project').addClass('about');
+        about.parent(container);
+
+        // div for each year
+        let year2020 = createDiv().addClass('year');
+        let year2021 = createDiv().addClass('year');
+
+        let btncontainer20 = createDiv().style('background-color', '#0f1620').addClass('months');
+        let btncontainer21 = createDiv().style('background-color', '#0f1620').addClass('months');
+
+        // create unselectable buttons (beginning)
+        let l_b = ['JAN', 'FEB'];
+        l_b.forEach(mon => {
+            let btn_dead = createButton(mon).addClass('dead');
+            btncontainer20.child(btn_dead);
+        });
+
+        for (i = 0; i < months.length; i++) {
+            // for each month create a button, assign class
+            let btn_txt = ["MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL"];
+            // let btn_txt = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March", "April", "May", "June", "July"];
+            
+            var btn = createButton(btn_txt[i]);
+
+            if (i == months.indexOf(starter)) {
+                btn.addClass('infocus'); // set focus on starter button
+            } else {
+                btn.addClass('selector'); // all others get selector class
+            }
+
+            if (i < 10) {
+                btncontainer20.child(btn);
+            } else {
+                btncontainer21.child(btn);
+            }
+
+            // create array of button and month
+            var sub = [btn ,months[i]];
+            // add to selectors array
+            selectors.push(sub);
+        }
+
+        // create more unselectable buttons (end of 2021)
+        let l_e = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        l_e.forEach(mon => {
+            let btn_dead = createButton(mon).addClass('dead');
+            btncontainer21.child(btn_dead);
+        });
+
+        btncontainer20.parent(year2020);
+        btncontainer21.parent(year2021);
+
+        let cont1 = createDiv('2020').addClass('legend');
+        year2020.child(cont1);
+
+        let cont2 = createDiv('2021').addClass('legend');
+        year2021.child(cont2);
         
-        var btn = createButton(btn_txt[i]);
+        cal.child(year2020);
+        cal.child(year2021);
 
-        if (i == months.indexOf(starter)) {
-            btn.addClass('infocus'); // set focus on starter button
-        } else {
-            btn.addClass('selector'); // all others get selector class
-        }
-
-        if (i < 10) {
-            year2020.child(btn);
-        } else {
-            year2021.child(btn);
-        }
-
-        // create array of button and month
-        var sub = [btn ,months[i]];
-        // add to selectors array
-        selectors.push(sub);
+        // instruction
+        let info = createDiv('choose month');
+        info.addClass('info');
+        overlay.child(info);
+    } else {
+        overlay.show();
+        // change starter month button class
+        selectors[months.indexOf(starter)][0].removeClass("selector").addClass("infocus");
     }
-
-    // create more unselectable buttons (end of 2021)
-    let l_e = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    l_e.forEach(mon => {
-        let btn_dead = createButton(mon).addClass('dead');
-        year2021.child(btn_dead);
-    });
-
-    let cont1 = createDiv('2020').addClass('legend');
-    year2020.child(cont1);
-
-    let cont2 = createDiv('2021').addClass('legend');
-    year2021.child(cont2);
-    
-    cal.child(year2020);
-    cal.child(year2021);
-
-    // instruction
-    let info = createDiv('choose month');
-    info.addClass('info');
-    overlay.child(info);
 }
 
 function checkStatus() {
@@ -281,13 +338,12 @@ function createEcho() {
             new_echo.play();
             // log that echo has been added
             echo_state[i] = true;
-            // console.log('echo added: ' + echo_state[i]);
         }
     }
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth-15, windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
 
     if (pcounter == totalfiles) { // only allow recalculation if all files are loaded
         positions = [];
@@ -303,23 +359,7 @@ function windowResized() {
 function draw() {
     background(15, 22, 32);
 
-    if (pcounter < totalfiles) { // loading animation
-
-        noStroke();
-        fill(255);
-        textFont(proxima_bold);
-        textSize(30);
-        textAlign(CENTER)
-
-        var percent = floor(pcounter / totalfiles * 100);
-        text(percent + '%', windowWidth/2, windowHeight/2 );
-
-        textFont(proxima_regular);
-        textSize(13);
-        text('loaded', windowWidth/2, windowHeight/2 + 20 );
-    }
-
-    if (toggle == true) { // if button has been pressed
+    if ((toggle == true) && (disc_toggle == true)){ // if button has been pressed and disclaimer was okayed
 
         for (i = 0; i < things.length; i++) { // loop through sound objects
 
@@ -365,13 +405,58 @@ function draw() {
         img.resize(24, 24);
         image(img, mouseX - 12, mouseY - 12);
 
+        let ccounter = 1;
+
         // draw the other mice
         for (let c in client_arr) {
 
-            fill('#EC7585'); // fill(client_arr[c][2]);
-            ellipse(client_arr[c][0], client_arr[c][1], 8);
+            noStroke();
+            fill('#E14B4B'); // fill(client_arr[c][2]);
+            // ellipse(client_arr[c][0], client_arr[c][1], 8);
+
+            let w = textWidth('visitor ' + ccounter); //c.slice(0, 5)
+            let x = client_arr[c][0] + 15;
+            let y = client_arr[c][1];
+
+            cursor_img.resize(25, 25);
+            image(cursor_img, x-19, y-25);
+
+            rectMode(CORNER);
+            rect(x, y, w+14, 20, 4);
+    
+            fill(255);
+            //textFont(proxima_regular);
+            textFont(neuzeit);
+            textSize(13);
+            textAlign(LEFT, TOP);
+            text('visitor ' + ccounter, x+7, y+2); //c.slice(0, 5)
+
+            ccounter ++
         }
+
+        // allow to navigate back to about section
+        about.mousePressed(backtoabout);
     }
+}
+
+function backtoabout() {
+
+        toggle = false;
+        backandforth++;
+
+        for (i = 0; i < things.length; i++) { // stop all sound
+            things[i].sound.stop();
+        }
+
+        // hide stuff
+        cvs.hide();
+        overlay.hide();
+
+        // show intro stuff
+        button.show();
+        intro.style('display', 'flex');
+        txtsection.show();
+        cursor();
 }
 
 function mouseMoved() {
@@ -382,10 +467,6 @@ function mouseMoved() {
 }
 
 function sendmouse(xpos, ypos, ID) {
-
-    // send mouse x and y position
-    // We are sending!
-    // console.log('sendmouse: ' + xpos + '' + ypos);
 
     // Make a little object with  and y
     var data = {
@@ -415,6 +496,9 @@ function mousePressed() {
                 
                 // if not, set equal
                 starter = pair[1];
+
+                // change button class
+                selectors[months.indexOf(starter)][0].removeClass("selector").addClass("infocus");
                 
                 // stop all sound
                 for (i = 0; i < things.length; i++) {
@@ -474,8 +558,9 @@ class Sound {
     labelHover() {
         noStroke();
         fill('#4BE1C3');
-        textFont(proxima_regular);
-        textSize(13);
+        //textFont(proxima_regular);
+        textFont(neuzeit, 16);
+        textSize(16);
         textAlign(CENTER)
 
         text(this.name, this.x, this.y + 5);
@@ -560,13 +645,14 @@ class Sound {
         rect(boxX, boxY, width+32, 20, 4);
 
         fill(255);
-        textFont(proxima_regular);
-        textSize(13);
+        // textFont(proxima_regular);
+        textFont(neuzeit, 16);
+        textSize(16);
         textAlign(LEFT, CENTER);
-        text(this.views, boxX+25, boxY+9);
+        text(this.views, boxX+28, boxY+10);
 
         viewcount_img.resize(15, 10);
-        image(viewcount_img, boxX+5, boxY+5);
+        image(viewcount_img, boxX+6, boxY+5);
     }
 
     panning(x) {
