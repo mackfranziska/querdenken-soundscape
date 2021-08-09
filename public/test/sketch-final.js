@@ -683,13 +683,13 @@ class Sound {
 
 $(document).scroll(function() {
     var y = $(this).scrollTop();
-    if (y > (windowHeight*1.8)) {
+    if (y > (windowHeight*1.7)) {
       $('.zwei').fadeIn();
     } else {
       $('.zwei').fadeOut();
     }
 
-    if (y > (windowHeight*2)) {
+    if (y > (windowHeight*1.9)) {
         $('.drei').fadeIn();
       } else {
         $('.drei').fadeOut();
@@ -729,7 +729,7 @@ function revealOnScroll(val, element) {
     });
 }
 
-revealOnScroll(3, '.w');
+revealOnScroll(2.8, '.w');
 revealOnScroll(3.05, '.x');
 revealOnScroll(3.1, '.y');
 revealOnScroll(3.15, '.z');
