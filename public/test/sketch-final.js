@@ -2,7 +2,7 @@ let data;
 let months = ["March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January", "February", "March21", "April21", "May21", "June21", "July21"];
 var starter = "March21";
 
-var cvs, button, main, about, intro, txtsection, overlay, selectors = [], disable, dialogue, box, p;
+var cvs, button, main, about, intro, allimgs, txtsection, overlay, selectors = [], disable, dialogue, box, p, body;
 let toggle = false, disc_toggle = false, backandforth = 0;
 
 var files = [], range = [], positions = [], channels = [], views = [], things = [], things_r = [];
@@ -34,7 +34,8 @@ function setup() {
     neuzeit = loadFont('https://use.typekit.net/wtv7bap.css');
 
     // load cursor img
-    img = loadImage('assets/hear-no-evil@2x.png');
+    // img = loadImage('assets/hear-no-evil@2x.png');
+    img = loadImage('assets/ear-white@2x.png');
     viewcount_img = loadImage('assets/viewcount@2x.png');   
     cursor_img = loadImage('assets/cursor@2x.png');
 
@@ -43,7 +44,7 @@ function setup() {
 
     // NODE: Start a socket connection to the server
     // 'https://querdenken.herokuapp.com' || http://localhost:3000
-    socket = io.connect('https://querdenken.herokuapp.com');
+    socket = io.connect('http://localhost:3000');
 
     // vector for saving incoming mouse postion
     vector = createVector(-100, -100);
@@ -88,6 +89,11 @@ function loadSounds(data) { // load sounds via callback function
     // nest inside main element
     main = select("main");
     main.child(placehldr);
+
+    body = select('body');
+
+    let footer = createDiv("<p class='footer'><span class='highlight'>(Un)Echo Chamber </span>is part of my thesis project at Parsons School of Design. I claim no rights to any of the assets used on this website. If you are the author of a voice message and would like it to be removed, please <span class='underline'>reach out</span>.</p>");//<br><br>Franziska Mack 2021
+    footer.parent(body);
 
     // for each month
     for (let j = 0; j < months.length; j++) {
@@ -167,6 +173,8 @@ function startAudio() { //
 
     // hide all the intro stuff
     button.hide();
+    allimgs = select(".allimgs");
+    allimgs.hide();
     intro = select(".intro");
     intro.hide();
     txtsection = select(".textsection");
@@ -205,7 +213,10 @@ function startAudio() { //
     
             toggle = true;
             disc_toggle = true;
-            noCursor();
+
+            if (mouseY > 40) {
+                noCursor();
+            }
 
             box.hide(); // hide overlay and dialogue box
             disable.hide();
@@ -288,10 +299,10 @@ function createMonthSelector() {
         cal.child(year2020);
         cal.child(year2021);
 
-        // instruction
-        let info = createDiv('choose month');
-        info.addClass('info');
-        overlay.child(info);
+        // // instruction
+        // let info = createDiv('choose month');
+        // info.addClass('info');
+        // overlay.child(info);
     } else {
         overlay.show();
         // change starter month button class
@@ -357,6 +368,7 @@ function windowResized() {
 }
 
 function draw() {
+    console.log(mouseY);
     background(15, 22, 32);
 
     if ((toggle == true) && (disc_toggle == true)){ // if button has been pressed and disclaimer was okayed
@@ -402,8 +414,11 @@ function draw() {
             } 
         };
 
-        img.resize(24, 24);
-        image(img, mouseX - 12, mouseY - 12);
+        
+        if (mouseY > 41) {
+            img.resize(15, 22);
+            image(img, mouseX - 5, mouseY - 5);
+        }
 
         let ccounter = 1;
 
@@ -416,7 +431,7 @@ function draw() {
 
             let w = textWidth('visitor ' + ccounter); //c.slice(0, 5)
             let x = client_arr[c][0] + 15;
-            let y = client_arr[c][1];
+            let y = client_arr[c][1] + 80;
 
             cursor_img.resize(25, 25);
             image(cursor_img, x-19, y-25);
@@ -429,7 +444,7 @@ function draw() {
             textFont(neuzeit);
             textSize(13);
             textAlign(LEFT, TOP);
-            text('visitor ' + ccounter, x+7, y+2); //c.slice(0, 5)
+            text('visitor ' + ccounter, x+7, y+4); //c.slice(0, 5)
 
             ccounter ++
         }
@@ -454,6 +469,7 @@ function backtoabout() {
 
         // show intro stuff
         button.show();
+        allimgs.show();
         intro.style('display', 'flex');
         txtsection.show();
         cursor();
@@ -662,3 +678,58 @@ class Sound {
         this.sound.pan(panning);
     }
 }
+
+// _____________ JQUERY _____________ // 
+
+$(document).scroll(function() {
+    var y = $(this).scrollTop();
+    if (y > (windowHeight*1.8)) {
+      $('.zwei').fadeIn();
+    } else {
+      $('.zwei').fadeOut();
+    }
+
+    if (y > (windowHeight*2)) {
+        $('.drei').fadeIn();
+      } else {
+        $('.drei').fadeOut();
+      }
+  });
+
+function simpleParallax(intensity, element) {
+    $(window).scroll(function() {
+        var scrollTop = $(window).scrollTop();
+        var imgPos = scrollTop / intensity + 'px';
+        $(element).css('transform', 'translateY(' + imgPos + ')');
+    });
+}
+
+$(window).on('scroll', function () {
+    var pixels = $(document).scrollTop();
+    pixels = pixels / 200;
+    $('.a').css({"-webkit-filter": "blur(" + pixels + "px)","filter": "blur(" + pixels + "px)"}); 
+    $('.b').css({"-webkit-filter": "blur(" + pixels + "px)","filter": "blur(" + pixels + "px)"});   
+    $('.c').css({"-webkit-filter": "blur(" + pixels + "px)","filter": "blur(" + pixels + "px)"});       
+});
+
+simpleParallax(-10, '.e');
+simpleParallax(-10, '.d');
+simpleParallax(-3, '.a');
+simpleParallax(-3, '.b');
+simpleParallax(-3, '.c');
+
+function revealOnScroll(val, element) {
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > (windowHeight*val)) {
+        $(element).fadeIn();
+        } else {
+        $(element).fadeOut();
+        }
+    });
+}
+
+revealOnScroll(3, '.w');
+revealOnScroll(3.05, '.x');
+revealOnScroll(3.1, '.y');
+revealOnScroll(3.15, '.z');

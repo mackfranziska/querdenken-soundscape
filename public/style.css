@@ -23,7 +23,17 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #1d232c;
+  scroll-behavior: smooth;
 }
+
+:target:before {
+  content: "";
+  display: block;
+  background-color: #0f1620;
+  height: 5px;
+  margin: -5px 0 0;
+}
+
 
 main {
   display: flex;
@@ -51,7 +61,7 @@ h2 {
   font-family:'neuzeit-grotesk', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  width: 60%;
+  width: 42vw;
   margin-bottom: 36px;
 }
 
@@ -73,7 +83,7 @@ p {
   font-family:'neuzeit-grotesk', sans-serif;
   font-weight: 400;
   line-height: 38px;
-  width: 680px;
+  width: 42vw;
 }
 
 .big {
@@ -90,35 +100,182 @@ p {
 .pnewparagraph {
   margin-top: 30px;
   margin-bottom: 35vh;
+  width: 1100px;
 }
 
 .low {
   margin-bottom: 0px;
 }
 
+.images {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  margin: 0 0;
+  background-color: transparent;
+}
+
+.bg {
+  background-color: #0f1620;
+}
+
 .intro {
   height: 100vh;
   width: 100%;
-  background-color: #0f1620;
   display: flex;
+  z-index: 3;
+}
+
+/* This is for placing the intro images in the header section*/
+.introimg {
+  position: relative;
+  display: flex;
+}
+
+.a {
+  margin-right: 4vw;
+  margin-left: auto;
+  margin-top: 8vh;
+}
+
+.b {
+  margin-left: 3vw;
+  margin-top: 22vh;
+}
+
+.c {
+  margin-left: 6vw;
+  margin-top: 67vh;
+}
+
+.d {
+  margin-left: 18vw;
+  margin-top: 29vh;
+}
+
+.e {
+  margin-right: 8vw;
+  margin-left: auto;
+  margin-top: 67vh;
 }
 
 .centered {
   position: relative;
   margin: auto;
+  z-index: 4;
+}
+
+.arrow {
+  position: relative;
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-bottom: -160px;
 }
 
 .textsection {
   height: auto;
-  width: 1100px;
+  width: 98vw;
   margin-left: auto;
   margin-right: auto;
   background-color: #1d232c;
 }
 
+.imgcontainer {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row;
+  width: 98vw;
+  overflow: hidden;
+  align-content: flex-start;
+}
+
+.rightimgcontainer {
+  display: flex;
+  width: 98vw;
+  align-content: flex-start;
+  align-items: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+
+.germany {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 80px;
+  width: 45vw;
+  flex-grow: none;
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+  top: 0px;
+}
+
+.zwei {
+  z-index: 2;
+}
+
+.drei {
+  z-index: 3;
+}
+
+.telegram {
+  margin-left: 10vw;
+  justify-content: space-between;
+  width: 409px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 45vh;
+}
+
+.holdassets {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg {
+  margin-bottom: 10px;
+}
+
 .right {
   margin-top: 35vh;
-  margin-left: 420px;
+  margin-left: 7vw;
+  margin-right: 10vw;
+}
+
+.left {
+  margin-left: 10vw;
+}
+
+.subtxt {
+  font-size: 14px;
+  line-height: 26px;
+  margin-top: 50px;
+  color: #4be1c3;
+  width: 409;
+}
+
+.footer {
+  font-size: 14px;
+  line-height: 26px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.highlight {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  cursor: pointer;
 }
 
 .placeholder {
@@ -271,6 +428,7 @@ p {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
+  cursor: pointer;
 }
 
 .info {
@@ -382,14 +540,6 @@ p {
     margin-right: 5px;
   }
 
-  .textsection {
-    width: 840px;
-  }
-
-  p {
-    width: 500px;
-  }
-
   .big {
     width: 800px;
   }
@@ -398,10 +548,32 @@ p {
     width: 760px;
   }
 
-  .right {
-    margin-left: 340px;
+  .b {
+    display: none;
   }
-  
+
+  .c {
+    display: none;
+  }
+
+  .d{
+    margin-left: 4vw;
+
+  }
+
+  .e {
+    margin-right: 28vw;
+  }
+
+  .right {
+    margin-left: 40px;
+    margin-right: 10vw;
+  }
+
+}
+
+@media (max-width: 1100px) {
+
 }
 
 
