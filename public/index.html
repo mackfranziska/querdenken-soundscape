@@ -84,9 +84,38 @@
     <p class="big">(Un)Echo Chamber blends the emotionally charged voice messages that Querdenkers frequently share in their channels into an immersive soundscape that visitors can explore across time. Moving through the space, sounds build up, taking the focus off single messages' precise wording.</p>
     <p class="big pnewparagraph low">In contrast to the isolating experience of following a Telegram channel, (Un)Echo Chamber is a shared space. Sound triggered by other visitors on the website layers onto one's own soundscape, single voices' momentum further and creating an ever-evolving concoction of anger.</p>
   </div>
+  <div class="bar">
+    <div class="howitworks">
+      <p class="instructions">How it works</p>
+      <div class="xv">
+        <img src="assets/x@2x.png" alt="close" class="lilx" style="display: none;" width="11" height="11">
+        <img src="assets/v@2x.png" alt="expand" class="lilv" width="11" height="11">
+      </div>
+    </div>
+    <div class="overlaycontainer">
+      <p class="datacollection">The sound assets featured on this website are voice messages extracted from twentyfour Querdenken-related Telegram channels using Python and the Telethon library. Each voice message is represented by a bubble, reminiscent of Telegram's unique video-messaging element.</p>
+      <div class="itemcontainer">
+        <div>
+          <img src="assets/radius@2x.png" alt="radius" class="items" height="72" width="72">
+          <h2 id="itemh">radius : views</h2>
+          <p id="item">The radius of a bubble is determined by the corresponding voice message’s view count. The higher the outreach, the bigger the element.</p>
+        </div>
+        <div>
+          <img src="assets/proximity@2x.png" alt="proximity" class="items" height="72" width="122">
+          <h2 id="itemh">proximity : mentions</h2>
+          <p id="item">The layout takes into consideration different channels’ relationship to one another. Frequent mentions lead to close proximity.</p>
+        </div>
+        <div>
+          <img src="assets/visitors@2x.png" alt="visitors" class="items" height="58" width="48">
+          <h2 id="itemh">shared space</h2>
+          <p id="item">This is a shared experience. Every voice message triggered by another visitor on this website is rendered audible for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="test/sketch-final.js"></script>
+  <script src="test/sketch-final-final.js"></script>
   </div>
 </body>
 

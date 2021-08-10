@@ -16,13 +16,13 @@
 *::-webkit-scrollbar-thumb {
   background-color: #4be1c3;
   border-radius: 20px;
-  border: 2px solid #1d232c;
+  border: 2px solid #1C2129;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #1d232c;
+  background-color: #1C2129;
   scroll-behavior: smooth;
 }
 
@@ -177,7 +177,7 @@ p {
   width: 98vw;
   margin-left: auto;
   margin-right: auto;
-  background-color: #1d232c;
+  background-color: #1C2129;
 }
 
 .imgcontainer {
@@ -265,6 +265,7 @@ p {
   margin-right: auto;
   margin-bottom: 60px;
   text-align: center;
+  margin-top: -30px;
 }
 
 .highlight {
@@ -287,7 +288,7 @@ p {
   width: 220px;
   flex: none;
 
-  background-color: #1d232c;
+  background-color: #1C2129;
 	cursor: default;
 	color: white;
   font-size: 18px;
@@ -311,7 +312,7 @@ p {
   width: 220px;
   flex: none;
 
-  background-color: #1d232c;
+  background-color: #1C2129;
 	cursor: pointer;
 	color: #4be1c3;
   font-size: 18px;
@@ -518,7 +519,99 @@ p {
   margin-top: 4px;
 }
 
-@media (max-width: 1270px) {
+.bar {
+  height: 30px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  background-color: #1C2129;
+  display: none;
+  justify-content: space-between;
+  flex-flow: column-reverse;
+  border-top: cyan ;
+  border-width: 2px;
+}
+
+.howitworks {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: row;
+  align-content: center;
+  margin-bottom: -3px;
+}
+
+.xv {
+  margin-top: 23px;
+  width: 11px;
+  height: 11px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.instructions {
+  color: #ffffff;
+  margin-bottom: -2px;
+  font-size: 14px;
+  font-family:'neuzeit-grotesk', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  width: auto;
+}
+
+.instructions:hover {
+  cursor: pointer;
+}
+
+.overlaycontainer {
+  display: none;
+  justify-content: space-between;
+  flex-flow: column;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+.itemcontainer {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+}
+
+#item {
+  width: 26vw;
+  line-height: 30px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+#itemh {
+  width: 26vw;
+  line-height: 34px;
+  margin-bottom: -5px;
+  font-size: 14px;
+  margin-top: 25px;
+}
+
+.datacollection {
+  font-size: 15px;
+  line-height: 30px;
+  width: 56vw;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+
+@media (max-width: 1275px) {
+
+  .datacollection {
+    width: 860px;
+  }
+
 
   .year {
     display: inline-flex;
@@ -573,14 +666,32 @@ p {
 }
 
 
-@media (min-width: 1270px) {
+@media (min-width: 1275px) {
   .imgcontainer {
- overflow: visible;
+    overflow: visible;
   }
 
 }
+
 @media (max-width: 1100px) {
 
+  .datacollection {
+    font-size: 15px;
+    width: 640px;
+    line-height: 28px;
+  }
+
+  #itemh {
+    font-size: 14px;
+    line-height: 28px;
+
+  }
+
+  #item {
+    font-size: 15px;
+    line-height: 28px;
+  }
+  
 }
 
 
