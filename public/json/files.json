@@ -22,7 +22,7 @@
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_mar20.mp3",
-        "range": 5.470588235294118,
+        "range": 4.470588235294118,
         "pos": [
             61,
             82
@@ -32,12 +32,12 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_jun20.mp3",
-        "range": 15.117647058823529,
+        "range": 14.117647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "61.4K"
+        "views": "41.4K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -47,7 +47,7 @@
             20,
             70
         ],
-        "views": "45.5K"
+        "views": "35.5K"
     }
 ],
 "April": [
@@ -74,7 +74,7 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_apr20.mp3",
-        "range": 13.529411764705882,
+        "range": 12.529411764705882,
         "pos": [
             41,
             45
@@ -94,7 +94,7 @@
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_apr20.mp3",
-        "range": 5.970588235294118,
+        "range": 5.570588235294118,
         "pos": [
             61,
             82
@@ -104,12 +104,12 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_apr20.mp3",
-        "range": 16.117647058823529,
+        "range": 14.517647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "64.4K"
+        "views": "44.4K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -146,12 +146,12 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_may20.mp3",
-        "range": 13.629411764705882,
+        "range": 13.229411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "35.5K"
+        "views": "36.5K"
     },
     {
         "channel": "t.me/KenFM",
@@ -171,7 +171,7 @@
             61,
             82
         ],
-        "views": "6.5K"
+        "views": "6.1K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -203,7 +203,7 @@
             42,
             67
         ],
-        "views": "30.2K"
+        "views": "32.2K"
     },
     {
         "channel": "t.me/KenFM",
@@ -218,12 +218,12 @@
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_jun20.mp3",
-        "range": 5.970588235294118,
+        "range": 5.870588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "6.5K"
+        "views": "6.2K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -238,12 +238,12 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_aug.mp3",
-        "range": 16.117647058823529,
+        "range": 14.717647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "64.4K"
+        "views": "46.7K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -275,17 +275,17 @@
             41,
             45
         ],
-        "views": "35.5K"
+        "views": "40.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_jul20.mp3",
-        "range": 11.882352941176471,
+        "range": 11.982352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "30.2K"
+        "views": "32.2K"
     },
     {
         "channel": "t.me/KenFM",
@@ -320,12 +320,12 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_jun20.mp3",
-        "range": 16.117647058823529,
+        "range": 14.917647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "64.4K"
+        "views": "50.1K"
     },
     {
         "channel": "t.me/evarosen",
@@ -339,6 +339,16 @@
     }
 ],
 "August": [
+    {
+        "channel": "t.me/querdenken_711",
+        "path": "files/ballweg_jan21.mp3",
+        "range": 9.882352941176471,
+        "pos": [
+            60,
+            37
+        ],
+        "views": "54.5K"
+    },
     {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_aug.mp3",
@@ -387,7 +397,7 @@
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "37.2K"
     },
     {
         "channel": "t.me/KenFM",
@@ -432,22 +442,22 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_aug.mp3",
-        "range": 4.588235294117647,
+        "range": 4.788235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "2.4K"
+        "views": "3.4K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_apr20.mp3",
-        "range": 17.117647058823529,
+        "range": 15.617647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "66.4K"
+        "views": "56.4K"
     },
     {
         "channel": "t.me/wordarg",
@@ -494,22 +504,22 @@
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_sep.mp3",
-        "range": 12.482352941176471,
+        "range": 12.582352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "33.5K"
+        "views": "38.5K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_sep.mp3",
-        "range": 6.670588235294118,
+        "range": 6.070588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "8.9K"
+        "views": "7.9K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -576,32 +586,32 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_oct.mp3",
-        "range": 14.629411764705882,
+        "range": 14.929411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "49.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_oct.mp3",
-        "range": 12.482352941176471,
+        "range": 12.982352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "40.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_oct.mp3",
-        "range": 6.270588235294118,
+        "range": 6.070588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "8.5K"
+        "views": "7.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -616,7 +626,7 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_oct.mp3",
-        "range": 4.588235294117647,
+        "range": 4.888235294117647,
         "pos": [
             52,
             75
@@ -626,12 +636,12 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_aug.mp3",
-        "range": 17.217647058823529,
+        "range": 16.217647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "61.4K"
     },
     {
         "channel": "t.me/WENDLER",
@@ -718,22 +728,22 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_nov.mp3",
-        "range": 14.629411764705882,
+        "range": 14.929411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "49.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_nov.mp3",
-        "range": 12.482352941176471,
+        "range": 12.982352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "42.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
@@ -773,17 +783,17 @@
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "71.4K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_nov.mp3",
-        "range": 17.588235294117647,
+        "range": 19.588235294117647,
         "pos": [
             30,
             33
         ],
-        "views": "77.4K"
+        "views": "88.2K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -835,7 +845,7 @@
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "10.2K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -870,12 +880,12 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_dec.mp3",
-        "range": 14.629411764705882,
+        "range": 15.129411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "50.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
@@ -885,17 +895,17 @@
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "40.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_dec.mp3",
-        "range": 6.270588235294118,
+        "range": 6.970588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "8.5K"
+        "views": "9.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -910,32 +920,32 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_dec.mp3",
-        "range": 9.588235294117647,
+        "range": 9.688235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "15.4K"
+        "views": "16.4K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_mar20.mp3",
-        "range": 17.217647058823529,
+        "range": 17.317647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "72.4K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_dec.mp3",
-        "range": 17.588235294117647,
+        "range": 17.688235294117647,
         "pos": [
             30,
             33
         ],
-        "views": "77.4K"
+        "views": "78.4K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -992,12 +1002,12 @@
     {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_jan21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.182352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "10.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1032,12 +1042,12 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_jan21.mp3",
-        "range": 14.629411764705882,
+        "range": 15.629411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "55.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
@@ -1047,7 +1057,7 @@
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "42.3K"
     },
     {
         "channel": "t.me/CoronaFakten",
@@ -1072,32 +1082,32 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_jan21.mp3",
-        "range": 9.588235294117647,
+        "range": 9.788235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "17.4K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_apr20.mp3",
-        "range": 17.217647058823529,
+        "range": 17.417647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "73.1K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_jan21.mp3",
-        "range": 17.588235294117647,
+        "range": 16.588235294117647,
         "pos": [
             30,
             33
         ],
-        "views": "77.4K"
+        "views": "72.4K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -1112,7 +1122,7 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_jan21.mp3",
-        "range": 9.941176470588236,
+        "range": 9.441176470588236,
         "pos": [
             46,
             81
@@ -1132,14 +1142,24 @@
 ],
 "February": [
     {
+        "channel": "t.me/Wolfmut_Tiefgang",
+        "path": "files/wolfgang_jul21.mp3",
+        "range": 10.882352941176471,
+        "pos": [
+            82,
+            69
+        ],
+        "views": "18.4K"
+    },
+    {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_feb21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.282352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "11.4K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1164,32 +1184,32 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_feb21.mp3",
-        "range": 14.629411764705882,
+        "range": 15.629411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "56.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_feb21.mp3",
-        "range": 12.482352941176471,
+        "range": 12.982352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "45.4K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_feb21.mp3",
-        "range": 9.270588235294118,
+        "range": 10.270588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "15.5K"
+        "views": "18.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -1204,27 +1224,27 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_feb21.mp3",
-        "range": 9.588235294117647,
+        "range": 9.988235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "20.3K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_mar20.mp3",
-        "range": 17.217647058823529,
+        "range": 17.517647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "75.4K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_feb21.mp3",
-        "range": 16.588235294117647,
+        "range": 16.288235294117647,
         "pos": [
             30,
             33
@@ -1249,7 +1269,7 @@
             46,
             81
         ],
-        "views": "15.4K"
+        "views": "17.4K"
     },
     {
         "channel": "t.me/querdenken_711",
@@ -1264,14 +1284,24 @@
 ],
 "March21": [
     {
+        "channel": "t.me/Wolfmut_Tiefgang",
+        "path": "files/wolfgang_jul21.mp3",
+        "range": 10.882352941176471,
+        "pos": [
+            82,
+            69
+        ],
+        "views": "17.4K"
+    },
+    {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_mar21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.682352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "15.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1306,32 +1336,32 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_mar21.mp3",
-        "range": 14.629411764705882,
+        "range": 15.629411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "57.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_mar21.mp3",
-        "range": 12.482352941176471,
+        "range": 13.182352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "46.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_mar21.mp3",
-        "range": 9.270588235294118,
+        "range": 10.970588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "15.5K"
+        "views": "19.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -1346,32 +1376,32 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_mar21.mp3",
-        "range": 9.588235294117647,
+        "range": 10.088235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "21.3K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_apr20.mp3",
-        "range": 17.217647058823529,
+        "range": 17.517647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "75.2K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_mar21.mp3",
-        "range": 16.588235294117647,
+        "range": 16.188235294117647,
         "pos": [
             30,
             33
         ],
-        "views": "67.4K"
+        "views": "62.4K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -1386,12 +1416,12 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_mar21.mp3",
-        "range": 9.941176470588236,
+        "range": 9.991176470588236,
         "pos": [
             46,
             81
         ],
-        "views": "15.4K"
+        "views": "18.4K"
     },
     {
         "channel": "t.me/wordarg",
@@ -1422,18 +1452,28 @@
             27
         ],
         "views": "13.4K"
+    },
+    {
+        "channel": "t.me/querdenken_711",
+        "path": "files/ballweg_jan21.mp3",
+        "range": 9.882352941176471,
+        "pos": [
+            60,
+            37
+        ],
+        "views": "54.5K"
     }
 ],
 "April21": [
     {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_apr21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.982352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "18.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1468,32 +1508,32 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_apr21.mp3",
-        "range": 14.629411764705882,
+        "range": 15.829411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "45.5K"
+        "views": "60.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_apr21.mp3",
-        "range": 12.482352941176471,
+        "range": 13.482352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "48.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_apr21.mp3",
-        "range": 9.270588235294118,
+        "range": 11.570588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "15.5K"
+        "views": "21.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -1508,12 +1548,12 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_apr21.mp3",
-        "range": 9.588235294117647,
+        "range": 10.588235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "22.5K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
@@ -1523,7 +1563,7 @@
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "72.4K"
     },
     {
         "channel": "t.me/WENDLER",
@@ -1548,12 +1588,12 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_apr21.mp3",
-        "range": 9.941176470588236,
+        "range": 10.141176470588236,
         "pos": [
             46,
             81
         ],
-        "views": "15.4K"
+        "views": "21.4K"
     },
     {
         "channel": "t.me/nana_lifestyler",
@@ -1600,12 +1640,12 @@
     {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_may21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.882352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "17.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1650,22 +1690,22 @@
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_may21.mp3",
-        "range": 12.482352941176471,
+        "range": 13.82352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "49.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_may21.mp3",
-        "range": 9.270588235294118,
+        "range": 12.270588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "15.5K"
+        "views": "28.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -1680,32 +1720,32 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_may21.mp3",
-        "range": 9.588235294117647,
+        "range": 10.688235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "23.4K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_mar20.mp3",
-        "range": 17.217647058823529,
+        "range": 17.817647058823529,
         "pos": [
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "78.4K"
     },
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_may21.mp3",
-        "range": 16.588235294117647,
+        "range": 16.988235294117647,
         "pos": [
             30,
             33
         ],
-        "views": "67.4K"
+        "views": "71.2K"
     },
     {
         "channel": "t.me/samueleckert",
@@ -1720,12 +1760,12 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_may21.mp3",
-        "range": 9.941176470588236,
+        "range": 10.941176470588236,
         "pos": [
             46,
             81
         ],
-        "views": "15.4K"
+        "views": "22.4K"
     },
     {
         "channel": "t.me/nana_lifestyler",
@@ -1772,12 +1812,12 @@
     {
         "channel": "t.me/aktivistmann",
         "path": "files/aktivist_jun21.mp3",
-        "range": 7.982352941176471,
+        "range": 8.582352941176471,
         "pos": [
             69,
             77
         ],
-        "views": "9.9K"
+        "views": "12.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1812,32 +1852,32 @@
     {
         "channel": "t.me/ATTILAHILDMAN",
         "path": "files/attila_jun21.mp3",
-        "range": 18.629411764705882,
+        "range": 18.229411764705882,
         "pos": [
             41,
             45
         ],
-        "views": "75.5K"
+        "views": "71.5K"
     },
     {
         "channel": "t.me/Schrang_TV",
         "path": "files/heiko_mar21.mp3",
-        "range": 12.482352941176471,
+        "range": 13.482352941176471,
         "pos": [
             42,
             67
         ],
-        "views": "32.2K"
+        "views": "47.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_jun21.mp3",
-        "range": 9.270588235294118,
+        "range": 11.970588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "15.5K"
+        "views": "22.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -1852,12 +1892,12 @@
     {
         "channel": "t.me/evarosen",
         "path": "files/eva_jun21.mp3",
-        "range": 9.588235294117647,
+        "range": 10.988235294117647,
         "pos": [
             52,
             75
         ],
-        "views": "16.4K"
+        "views": "27.4K"
     },
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
@@ -1867,7 +1907,7 @@
             17,
             45
         ],
-        "views": "67.4K"
+        "views": "72.4K"
     },
     {
         "channel": "t.me/WENDLER",
@@ -1892,12 +1932,12 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_jun21.mp3",
-        "range": 9.941176470588236,
+        "range": 10.941176470588236,
         "pos": [
             46,
             81
         ],
-        "views": "15.4K"
+        "views": "25.4K"
     },
     {
         "channel": "t.me/nana_lifestyler",
@@ -1959,7 +1999,7 @@
             69,
             77
         ],
-        "views": "12.9K"
+        "views": "22.9K"
     },
     {
         "channel": "t.me/honkforhope",
@@ -1999,7 +2039,7 @@
             41,
             45
         ],
-        "views": "75.5K"
+        "views": "80.2K"
     },
     {
         "channel": "t.me/Schrang_TV",
@@ -2009,17 +2049,17 @@
             42,
             67
         ],
-        "views": "52.2K"
+        "views": "54.2K"
     },
     {
         "channel": "t.me/CoronaFakten",
         "path": "files/sebastian_jul21.mp3",
-        "range": 11.270588235294118,
+        "range": 12.970588235294118,
         "pos": [
             61,
             82
         ],
-        "views": "22.5K"
+        "views": "32.5K"
     },
     {
         "channel": "t.me/JANICHOFFICIAL",
@@ -2044,7 +2084,7 @@
     {
         "channel": "t.me/Eva_Herman_OFFICIAL",
         "path": "files/herman_mar20.mp3",
-        "range": 17.217647058823529,
+        "range": 16.817647058823529,
         "pos": [
             17,
             45
@@ -2054,7 +2094,7 @@
     {
         "channel": "t.me/WENDLER",
         "path": "files/wendler_jul21.mp3",
-        "range": 17.588235294117647,
+        "range": 17.788235294117647,
         "pos": [
             30,
             33
@@ -2074,12 +2114,12 @@
     {
         "channel": "t.me/MiriamHope",
         "path": "files/miriam_jun21.mp3",
-        "range": 10.941176470588236,
+        "range": 10.991176470588236,
         "pos": [
             46,
             81
         ],
-        "views": "21.4K"
+        "views": "28.4K"
     },
     {
         "channel": "t.me/RALudwig",
