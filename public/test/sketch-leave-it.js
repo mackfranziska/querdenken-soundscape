@@ -13,9 +13,7 @@ let proxima_bold, proxima_regular, neuzeit;
 
 let status; // hovered (own mouse)
 let m_status; // hovered (other mice)
-let n_status;
-let p_status;
-let stati = [];
+// let allpositions = []; 
 
 let delay;
 let counter = [], state = [];
@@ -421,28 +419,16 @@ function draw() {
 
             if ((status == false) || (m_status == false)) {
                 things[i].outline(things_r[i]); // if not, outline
-            } 
+            } if (m_status == true) {
+                
+                if (layers.length > 1) {
+                    if (expanded == false) {
+                        layers[1][i].sound.amp(1); // change volume
+                    } else if (expanded == true){
+                        layers[1][i].sound.amp(0); // change volume
+                    }
+                }
 
-            // for (let stat in stati) {
-            //     if (stat == false) {
-            //         things[i].outline(things_r[i]); // if not, outline
-            //     }
-            // } 
-            
-            if (stati[1] == true) { 
-                layers[1][i].sound.amp(1); // change volume
-            } else {
-                layers[1][i].sound.amp(0); // change volume
-            } 
-            if (stati[2] == true) { 
-                layers[2][i].sound.amp(1); // change volume
-            } else {
-                layers[2][i].sound.amp(0); // change volume
-            }
-            if (stati[3] == true) { 
-                layers[3][i].sound.amp(1); // change volume
-            } else {
-                layers[3][i].sound.amp(0); // change volume
             }
 
             let interval = things[i].range / 10;
@@ -459,7 +445,7 @@ function draw() {
 
             var timestamp = things[i].sound.bufferSourceNode.context.currentTime;
 
-            if ((status == true) || (m_status == true) || (n_status == true) || (p_status == true)){ // if yes...
+            if ((status == true) || (m_status == true)){ // if yes...
                 things[i].fillArea(things_r[i]); // highlight area
                 things[i].fillCircle(timestamp, things_r[i]);
 
@@ -473,7 +459,7 @@ function draw() {
             let coordinates = [mouseX, mouseY];
             things[i].hovered(coordinates, client_arr);
 
-            if ((status == true) || (m_status == true) || (n_status == true) || (p_status == true)){ // add label on top
+            if ((status == true) || (m_status == true)){ // add label on top
                 things[i].labelHover();
             } 
         };
@@ -710,36 +696,7 @@ class Sound {
             } else {
                 m_status = false;
             }
-
-            stati[c] = m_status;
         }
-
-        // if (layers.length > 1) {
-        //     let md = dist(this.x, this.y, mice[1][0], mice[1][1]);
-
-        //     if (md < this.range / 3) {
-        //         m_status = true;
-        //     } else {
-        //         m_status = false;
-        //     }
-        // } else if (layers.length > 2) {
-        //     let nd = dist(this.x, this.y, mice[2][0], mice[2][1]);
-
-        //     if (nd < this.range / 3) {
-        //         n_status = true;
-        //     } else {
-        //         n_status = false;
-        //     }
-        // } else if (layers.length > 3) {
-        //     let pd = dist(this.x, this.y, mice[3][0], mice[3][1]);
-
-        //     if (pd < this.range / 3) {
-        //         p_status = true;
-        //     } else {
-        //         p_status = false;
-        //     }
-        // }
-  
     }
 
     fillCircle(timestamp, r) {
